@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <Base title="株式会社リハビット | 組織の医師">
 
@@ -254,19 +255,19 @@ import Base from '../layouts/Base.astro';
       <a href="#contact" class="btn-g" style="color:var(--tx2);">全サービスを見る</a>
     </div>
     <div class="svc-grid">
-      <div class="svc-card" onclick="location.href='/healthcare'" style="cursor:pointer;">
+      <div class="svc-card" onclick={`location.href='${base}healthcare'`} style="cursor:pointer;">
         <div class="svc-tag">Healthcare Management</div>
         <div class="svc-ttl">医療機関・介護機関<br>経営コンサルティング</div>
         <div class="svc-desc">財務分析・制度戦略・組織設計の三軸で、病院・介護施設の経営改善を支援。病床稼働率改善から機能転換・地域連携強化まで、数字で語る提案を行います。</div>
         <div class="svc-more">詳しく見る</div>
       </div>
-      <div class="svc-card" onclick="location.href='/occupational'" style="cursor:pointer;">
+      <div class="svc-card" onclick={`location.href='${base}occupational'`} style="cursor:pointer;">
         <div class="svc-tag">Occupational Health</div>
         <div class="svc-ttl">産業医・<br>労働衛生コンサルティング</div>
         <div class="svc-desc">機会損失・訴訟リスク・採用コストの増大——社員の不調を放置した場合の経営インパクトを数字で示し、組織の成果を上げるための産業保健として提案・実装します。</div>
         <div class="svc-more">詳しく見る</div>
       </div>
-      <div class="svc-card" onclick="location.href='/rehab'" style="cursor:pointer;">
+      <div class="svc-card" onclick={`location.href='${base}rehab'`} style="cursor:pointer;">
         <div class="svc-tag">Rehabilitation</div>
         <div class="svc-ttl">リハビリテーション<br>事業支援</div>
         <div class="svc-desc">回復期病棟・外来リハ・介護保険施設のリハビリ部門に対し、医師の立場から技術・運営・収益の三面を支援。研修・教材開発にも対応します。</div>
@@ -326,7 +327,7 @@ import Base from '../layouts/Base.astro';
     <div class="prof-g">
       <div>
         <div class="photo-frame" style="padding:0;">
-          <img src="/prof_photo.jpg" alt="山﨑康太郎" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+          <img src={`${base}prof_photo.jpg`} alt="山﨑康太郎" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
           <div class="photo-badge">代表取締役　山﨑 康太郎</div>
         </div>
       </div>

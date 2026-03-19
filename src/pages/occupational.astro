@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <Base title="産業医・労働衛生コンサルティング | 株式会社リハビット" isSubPage={true}>
 
@@ -77,7 +78,7 @@ import Base from '../layouts/Base.astro';
 
 <div class="hero">
   <div class="breadcrumb">
-    <a href="/">トップ</a><span>/</span><span>産業医・労働衛生コンサルティング</span>
+    <a href={base}>トップ</a><span>/</span><span>産業医・労働衛生コンサルティング</span>
   </div>
   <div class="eyebrow">Occupational Health</div>
   <h1 class="hero-h">

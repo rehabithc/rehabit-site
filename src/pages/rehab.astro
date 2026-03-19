@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <Base title="リハビリテーション事業支援 | 株式会社リハビット" isSubPage={true}>
 
@@ -94,7 +95,7 @@ import Base from '../layouts/Base.astro';
 
 <div class="hero">
   <div class="breadcrumb">
-    <a href="/">トップ</a><span>/</span><span>リハビリテーション事業支援</span>
+    <a href={base}>トップ</a><span>/</span><span>リハビリテーション事業支援</span>
   </div>
   <div class="eyebrow">Rehabilitation</div>
   <h1 class="hero-h">
