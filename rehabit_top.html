@@ -1,10 +1,46 @@
----
-import Base from '../layouts/Base.astro';
-const base = import.meta.env.BASE_URL;
----
-<Base title="株式会社リハビット | 組織の医師">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社リハビット | 組織の医師</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:       #2650A2;
+  --blue-l:     #3A68C0;
+  --blue-ll:    #D0DCF4;
+  --orange:     #F4A407;
+  --orange-l:   #F8BC3E;
+  --orange-ll:  #FEF0C0;
+  --bg0:        #0A1422;
+  --bg1:        #0E1C30;
+  --bg2:        #132338;
+  --bg3:        #1A2D45;
+  --tx1:        #EFF2F7;
+  --tx2:        #A8B4C8;
+  --tx3:        #627088;
+  --bd:         rgba(255,255,255,0.07);
+  --bd2:        rgba(255,255,255,0.14);
+  --jp: 'Shippori Mincho','Hiragino Mincho ProN',serif;
+  --en: 'DM Serif Display',Georgia,serif;
+  --ss: 'Instrument Sans','Helvetica Neue',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg0);color:var(--tx1);font-family:var(--ss);line-height:1.7;overflow-x:hidden;}
+a{text-decoration:none;}
 
-<style is:global>
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:68px;background:rgba(10,20,34,0.93);backdrop-filter:blur(18px);border-bottom:0.5px solid var(--bd);}
+.nav-logo img{height:34px;width:auto;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:12.5px;font-weight:500;letter-spacing:.05em;color:var(--tx2);transition:color .18s;}
+.nav-links a:hover{color:var(--tx1);}
+.nav-cta{font-size:12px;font-weight:600;letter-spacing:.08em;padding:9px 22px;background:var(--orange);color:#fff;border-radius:3px;transition:background .18s;}
+.nav-cta:hover{background:var(--orange-l);}
+
 /* ── HERO ── */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 75% 75% at 72% 50%,black 20%,transparent 75%);}
@@ -19,6 +55,8 @@ const base = import.meta.env.BASE_URL;
 .hero-actions{display:flex;gap:20px;align-items:center;}
 .btn-p{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 34px;background:var(--blue);color:#fff;border-radius:3px;border:1.5px solid var(--blue);transition:background .18s,transform .15s;}
 .btn-p:hover{background:var(--blue-l);border-color:var(--blue-l);transform:translateY(-1px);color:#fff;}
+.btn-o{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 34px;background:var(--orange);color:#fff;border-radius:3px;border:1.5px solid var(--orange);transition:background .18s,transform .15s;}
+.btn-o:hover{background:var(--orange-l);border-color:var(--orange-l);transform:translateY(-1px);color:#fff;}
 .btn-g{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--tx2);border-bottom:0.5px solid var(--tx3);padding-bottom:2px;transition:color .18s,border-color .18s;}
 .btn-g:hover{color:var(--tx1);border-color:var(--tx1);}
 .btn-g::after{content:'→';}
@@ -115,7 +153,19 @@ const base = import.meta.env.BASE_URL;
 .btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 34px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
 .btn-co:hover{border-color:#fff;}
 
+/* ── FOOTER ── */
+footer{padding:56px 52px 40px;background:var(--bg0);border-top:0.5px solid var(--bd);}
+.foot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:200px 1fr 1fr;gap:56px;padding-bottom:40px;border-bottom:0.5px solid var(--bd);margin-bottom:28px;}
+.foot-tagline{font-family:var(--jp);font-size:12px;color:var(--tx3);line-height:1.85;margin-top:14px;}
+.foot-col-ttl{font-size:10px;font-weight:600;letter-spacing:.18em;color:var(--tx3);text-transform:uppercase;margin-bottom:18px;}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.foot-links a{font-family:var(--jp);font-size:13px;color:var(--tx2);transition:color .18s;}
+.foot-links a:hover{color:var(--tx1);}
+.foot-bottom{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+.foot-copy,.foot-corp{font-size:11px;color:var(--tx3);}
+
 /* ── ANIM ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 .hero-left>*{animation:fadeUp .65s ease both;}
 .hero-left>*:nth-child(1){animation-delay:.08s;}
 .hero-left>*:nth-child(2){animation-delay:.18s;}
@@ -124,6 +174,21 @@ const base = import.meta.env.BASE_URL;
 .hero-left>*:nth-child(5){animation-delay:.50s;}
 .hero-left>*:nth-child(6){animation-delay:.62s;}
 </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><img src="rehabit_logo_square.png" alt="株式会社リハビット"></a>
+  <ul class="nav-links">
+    <li><a href="#concept">コンセプト</a></li>
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#why">選ばれる理由</a></li>
+    <li><a href="#profile">代表紹介</a></li>
+    <li><a href="#blog">ブログ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">お問い合わせ</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -136,13 +201,13 @@ const base = import.meta.env.BASE_URL;
     <p class="hero-en">A physician's eye on management, policy, and people.</p>
     <p class="hero-body">
       「なぜ収益が戻らないのか」「なぜ人が定着しないのか」<br>
-      答えは財務にも、診療報酬にも、職場の空気にも、<br>
+      答えは財務にも、制度にも、職場の空気にも、<br>
       同時に潜んでいます。<br>
-      ——その問いに、医師の目線で向き合います。
+      ——かかりつけ医のように、組織全体を診て、治療から体質改善まで行います。
     </p>
     <div class="hero-actions">
-      <a href="#services" class="btn-p">サービスを見る</a>
-      <a href="#concept" class="btn-g">私たちのアプローチ</a>
+      <a href="#" class="btn-p tab-btn active" data-tab="medical" onclick="switchTab('medical');return false;">医療機関・介護機関の方へ</a>
+      <a href="#" class="btn-o tab-btn" data-tab="corporate" onclick="switchTab('corporate');return false;">企業・産業保健の方へ</a>
     </div>
   </div>
 
@@ -212,66 +277,40 @@ const base = import.meta.env.BASE_URL;
 <section class="sec" id="concept" style="background:var(--bg1);">
   <div class="si">
     <div class="sec-ey">Our Approach</div>
-    <div class="concept-g">
-      <div>
-        <h2 class="sec-h">財務を読み、<br>制度を読み、<br>人を読む。</h2>
-        <div class="concept-body">
-          <p>一般的なコンサルタントは経営数字を読めても、現場の医療・介護の文脈を理解できません。一般的な医師は臨床に優れていても、診療報酬の制度設計や財務の論理で語ることができません。</p>
-          <p>リハビットは、リハビリテーション科専門医・産業医・元病院経営者という三位一体のバックグラウンドから、医療機関・介護機関が抱える組織の「病理」を診断し、処方します。</p>
-        </div>
-      </div>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pbar"></div>
-          <div class="p-num">01 / Finance</div>
-          <div class="p-ttl">財務諸表から経営の病理を診断する</div>
-          <div class="p-desc">損益・貸借・キャッシュフローを読み解き、数字の背後にある構造的問題を特定します。病院特有の診療報酬収入の構造も精緻に分析します。</div>
-        </div>
-        <div class="pillar">
-          <div class="pbar"></div>
-          <div class="p-num">02 / Policy</div>
-          <div class="p-ttl">制度の変化を先読みし、組織を載せる</div>
-          <div class="p-desc">厚生労働省での政策立案経験を活かし、医療・労働・社会保障にわたる制度変化を先読みした組織・機能設計を提案します。</div>
-        </div>
-        <div class="pillar">
-          <div class="pbar"></div>
-          <div class="p-num">03 / Organization</div>
-          <div class="p-ttl">産業医として内側から突破口を開く</div>
-          <div class="p-desc">外部コンサルではなく産業医として組織内部に入り、ハードな数字提案だけでなく、人・文化・チームのソフト面の問題解決まで一貫して支援します。</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SERVICES -->
-<section class="sec alt" id="services">
-  <div class="si">
-    <div class="svc-hdr">
-      <div>
-        <div class="sec-ey">Services</div>
-        <h2 class="sec-h">支援領域</h2>
+    <!-- 医療機関向け -->
+    <div class="tab-content" id="concept-medical">
+      <div class="concept-g">
+        <div>
+          <h2 class="sec-h">財務を読み、<br>制度を読み、<br>人を読む。</h2>
+          <div class="concept-body">
+            <p>一般的なコンサルタントは経営数字を読めても、現場の医療・介護の文脈を理解できません。一般的な医師は臨床に優れていても、制度設計や財務の論理で語ることができません。</p>
+            <p>リハビットは、リハビリテーション科専門医・産業医・元病院経営者という複合的なバックグラウンドから、医療機関・介護機関が抱える組織の「病理」を診断し、処方します。</p>
+          </div>
+        </div>
+        <div class="pillars">
+          <div class="pillar"><div class="pbar"></div><div class="p-num">01 / Finance</div><div class="p-ttl">財務諸表から経営の病理を診断する</div><div class="p-desc">損益・貸借・キャッシュフローを読み解き、数字の背後にある構造的問題を特定します。病院特有の収入構造も精緻に分析します。</div></div>
+          <div class="pillar"><div class="pbar"></div><div class="p-num">02 / Policy</div><div class="p-ttl">制度の変化を先読みし、組織を載せる</div><div class="p-desc">厚生労働省での政策立案経験を活かし、医療・介護政策の変化を先読みした組織・機能設計を提案します。</div></div>
+          <div class="pillar"><div class="pbar"></div><div class="p-num">03 / Organization</div><div class="p-ttl">産業医として内側から突破口を開く</div><div class="p-desc">外部コンサルではなく産業医として組織内部に入り、数字提案だけでなく、人・文化・チームのソフト面の問題解決まで一貫して支援します。</div></div>
+        </div>
       </div>
-      <a href="#contact" class="btn-g" style="color:var(--tx2);">全サービスを見る</a>
     </div>
-    <div class="svc-grid">
-      <div class="svc-card" onclick="location.href='/healthcare'" style="cursor:pointer;">
-        <div class="svc-tag">Healthcare Management</div>
-        <div class="svc-ttl">医療機関・介護機関<br>経営コンサルティング</div>
-        <div class="svc-desc">財務分析・制度戦略・組織設計の三軸で、病院・介護施設の経営改善を支援。病床稼働率改善から機能転換・地域連携強化まで、数字で語る提案を行います。</div>
-        <div class="svc-more">詳しく見る</div>
-      </div>
-      <div class="svc-card" onclick="location.href='/occupational'" style="cursor:pointer;">
-        <div class="svc-tag">Occupational Health</div>
-        <div class="svc-ttl">産業医・<br>労働衛生コンサルティング</div>
-        <div class="svc-desc">機会損失・訴訟リスク・採用コストの増大——社員の不調を放置した場合の経営インパクトを数字で示し、組織の成果を上げるための産業保健として提案・実装します。</div>
-        <div class="svc-more">詳しく見る</div>
-      </div>
-      <div class="svc-card" onclick="location.href='/rehab'" style="cursor:pointer;">
-        <div class="svc-tag">Rehabilitation</div>
-        <div class="svc-ttl">リハビリテーション<br>事業支援</div>
-        <div class="svc-desc">回復期病棟・外来リハ・介護保険施設のリハビリ部門に対し、医師の立場から技術・運営・収益の三面を支援。研修・教材開発にも対応します。</div>
-        <div class="svc-more">詳しく見る</div>
+
+    <!-- 企業向け -->
+    <div class="tab-content" id="concept-corporate" style="display:none;">
+      <div class="concept-g">
+        <div>
+          <h2 class="sec-h">社員の不調は、<br>組織の<span style="color:var(--orange);">リスク</span>である。</h2>
+          <div class="concept-body">
+            <p>メンタルヘルス不調・過重労働・休職の長期化——いずれも放置すれば、機会損失・訴訟リスク・採用コストの増大として経営に跳ね返ります。</p>
+            <p>社員の健康と幸福を整えることは、組織の成果を上げるための経営課題です。様々な組織のガバナンスを見てきた専門家の目線で、産業保健を経営の武器にします。</p>
+          </div>
+        </div>
+        <div class="pillars">
+          <div class="pillar"><div class="pbar"></div><div class="p-num">01 / Risk</div><div class="p-ttl">機会損失・法的リスクを数字で示す</div><div class="p-desc">休職・離職・訴訟リスクを放置した場合の経営インパクトを試算し、投資対効果として経営層に提案します。</div></div>
+          <div class="pillar"><div class="pbar"></div><div class="p-num">02 / Governance</div><div class="p-ttl">多様な組織のガバナンスを見てきた眼</div><div class="p-desc">ベンチャー・外資系・医療法人・行政機関——業種を問わず組織の内側に入り、横断的な知見から具体的な改善提案ができます。</div></div>
+          <div class="pillar"><div class="pbar"></div><div class="p-num">03 / Performance</div><div class="p-ttl">産業保健を組織パフォーマンスに直結させる</div><div class="p-desc">ストレスチェック・衛生委員会・復職支援を「義務だからやる」から「成果を上げるためにやる」に変えます。</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -280,43 +319,41 @@ const base = import.meta.env.BASE_URL;
 <!-- WHY -->
 <section class="sec" id="why" style="background:var(--bg1);">
   <div class="si">
-    <div class="why-g">
-      <div class="why-sticky">
-        <div class="sec-ey">Why Rehabit</div>
-        <h2 class="sec-h">なぜ、医師が<br>コンサルするのか。</h2>
-        <p class="why-sub">医療現場を知らないコンサルタントと、経営を知らない医師。その間にいる人間が、最も必要とされている。</p>
-      </div>
-      <div class="why-items">
-        <div class="why-item">
-          <div class="why-num">01</div>
-          <div>
-            <div class="why-ttl">医師・経営者・政策立案者の三役を経験した唯一の視点</div>
-            <div class="why-body">東京大学医学部卒後、臨床医としてリハビリテーション科専門医を取得。診療所院長・事業部長として医院経営を担い、厚生労働省・日本医療機能評価機構への出向で政策と評価の現場も経験。この三つのレイヤーを同時に見渡せる医師は、日本で唯一です。</div>
-          </div>
+
+    <!-- 医療機関向け -->
+    <div class="tab-content" id="why-medical">
+      <div class="why-g">
+        <div class="why-sticky">
+          <div class="sec-ey">Why Rehabit</div>
+          <h2 class="sec-h">なぜ、医師が<br>コンサルするのか。</h2>
+          <p class="why-sub">現場を知らないコンサルタントと、経営を知らない専門家。その間にいる人間が、最も必要とされている。</p>
         </div>
-        <div class="why-item">
-          <div class="why-num">02</div>
-          <div>
-            <div class="why-ttl">「数字を出す」提案で、経営層の意思決定を後押し</div>
-            <div class="why-body">感覚や慣習ではなく、施策の導入効果を数字で試算し、社内稟議を通せる形にします。病床占有率94%→99%への改善も、データドリブンな現場支援の積み重ねです。</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-num">03</div>
-          <div>
-            <div class="why-ttl">ITと自動化を武器に、提案を現場実装まで届ける</div>
-            <div class="why-body">GAS・Python・Swift・AI APIを自在に扱い、業務改善の提案を「設計だけして終わり」にしません。デジタルツールの導入から運用定着まで一気通貫で支援します。</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-num">04</div>
-          <div>
-            <div class="why-ttl">1,000回超の講話・研修で培った、人が動く伝え方</div>
-            <div class="why-body">医師・コメディカル・管理職・一般職員まで、相手に合わせた言語で問題を共有し、自律的に動く組織を設計します。知識の移転だけでなく、文化の変容を目指します。</div>
-          </div>
+        <div class="why-items">
+          <div class="why-item"><div class="why-num">01</div><div><div class="why-ttl">医師・経営者・政策立案者の三役を経験した唯一の視点</div><div class="why-body">東京大学医学部卒後、臨床医としてリハビリテーション科専門医を取得。診療所および病院の院長・株式会社の事業部長として経営を担い、厚生労働省・日本医療機能評価機構への出向で政策立案と医療の質の視点を獲得。この三つのレイヤーを同時に見渡せる医師は、日本で唯一です。</div></div></div>
+          <div class="why-item"><div class="why-num">02</div><div><div class="why-ttl">「数字を出す」提案で、経営層の意思決定を後押し</div><div class="why-body">感覚や慣習ではなく、施策の導入効果を数字で試算し、社内稟議を通せる形にします。病床占有率94%→99%への改善も、データドリブンな現場支援の積み重ねです。</div></div></div>
+          <div class="why-item"><div class="why-num">03</div><div><div class="why-ttl">ITと自動化を武器に、提案を現場実装まで届ける</div><div class="why-body">GAS・Python・Swift・AI APIを自在に扱い、業務改善の提案を「設計だけして終わり」にしません。デジタルツールの導入から運用定着まで一気通貫で支援します。</div></div></div>
+          <div class="why-item"><div class="why-num">04</div><div><div class="why-ttl">1,000回超の講話・研修で培った、人が動く伝え方</div><div class="why-body">医師・コメディカル・管理職・一般職員まで、相手に合わせた言語で問題を共有し、自律的に動く組織を設計します。知識の移転だけでなく、文化の変容を目指します。</div></div></div>
         </div>
       </div>
     </div>
+
+    <!-- 企業向け -->
+    <div class="tab-content" id="why-corporate" style="display:none;">
+      <div class="why-g">
+        <div class="why-sticky">
+          <div class="sec-ey">Why Rehabit</div>
+          <h2 class="sec-h">産業保健を、<br>経営の武器に<br>できる理由。</h2>
+          <p class="why-sub">義務だからやる産業保健と、成果を出す産業保健は、まったく別物です。</p>
+        </div>
+        <div class="why-items">
+          <div class="why-item"><div class="why-num">01</div><div><div class="why-ttl">経営者の言葉でリスクを語れる産業医</div><div class="why-body">診療所院長・病院院長・株式会社事業部長として経営を担った経験から、機会損失・訴訟リスク・採用コストの増大を数字で試算し、稟議を通せる形で提案します。</div></div></div>
+          <div class="why-item"><div class="why-num">02</div><div><div class="why-ttl">多様な組織のガバナンスを見てきた専門家の眼</div><div class="why-body">ベンチャー・外資系・医療法人・行政機関——業種や規模を問わず多様な組織の内側に入り、「他の組織ではどうしているか」を踏まえた具体的な改善提案ができます。</div></div></div>
+          <div class="why-item"><div class="why-num">03</div><div><div class="why-ttl">メンタルと身体、両面から診られる</div><div class="why-body">リハビリテーション科専門医として筋骨格系の診断・治療知識を持ち、腰痛・肩こりなど職場で起きやすい身体不調にも対応。メンタルと身体の両面から組織の健康を支えます。</div></div></div>
+          <div class="why-item"><div class="why-num">04</div><div><div class="why-ttl">直接対応で、迅速・柔軟・安価に</div><div class="why-body">担当医師が直接スケジュール調整を行うため、紹介会社を介するより柔軟で迅速な対応が可能です。50人未満の小規模事業場にも、規模と状況に応じた対応をしています。</div></div></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -327,7 +364,7 @@ const base = import.meta.env.BASE_URL;
     <div class="prof-g">
       <div>
         <div class="photo-frame" style="padding:0;">
-          <img src={`${base}prof_photo.jpg`} alt="山﨑康太郎" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+          <img src="prof_photo.jpg" alt="山﨑康太郎" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
           <div class="photo-badge">代表取締役　山﨑 康太郎</div>
         </div>
       </div>
@@ -352,6 +389,39 @@ const base = import.meta.env.BASE_URL;
   </div>
 </section>
 
+<!-- SERVICES -->
+<section class="sec alt" id="services">
+  <div class="si">
+    <div class="svc-hdr">
+      <div>
+        <div class="sec-ey">Services</div>
+        <h2 class="sec-h">支援領域</h2>
+      </div>
+      <a href="#contact" class="btn-g" style="color:var(--tx2);">全サービスを見る</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="location.href='healthcare.html'" style="cursor:pointer;">
+        <div class="svc-tag">Healthcare Management</div>
+        <div class="svc-ttl">医療機関・介護機関<br>経営コンサルティング</div>
+        <div class="svc-desc">財務分析・制度戦略・組織設計の三軸で、病院・介護施設の経営改善を支援。病床稼働率改善から機能転換・地域連携強化まで、数字で語る提案を行います。</div>
+        <div class="svc-more">詳しく見る</div>
+      </div>
+      <div class="svc-card" onclick="location.href='occupational.html'" style="cursor:pointer;">
+        <div class="svc-tag">Occupational Health</div>
+        <div class="svc-ttl">産業医・<br>労働衛生コンサルティング</div>
+        <div class="svc-desc">機会損失・訴訟リスク・採用コストの増大——社員の不調を放置した場合の経営インパクトを数字で示し、組織の成果を上げるための産業保健として提案・実装します。</div>
+        <div class="svc-more">詳しく見る</div>
+      </div>
+      <div class="svc-card" onclick="location.href='rehab.html'" style="cursor:pointer;">
+        <div class="svc-tag">Rehabilitation</div>
+        <div class="svc-ttl">リハビリテーション<br>事業支援</div>
+        <div class="svc-desc">回復期病棟・外来リハ・介護保険施設のリハビリ部門に対し、医師の立場から技術・運営・収益の三面を支援。研修・教材開発にも対応します。</div>
+        <div class="svc-more">詳しく見る</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-band" id="contact">
   <div class="cta-inner">
@@ -366,4 +436,56 @@ const base = import.meta.env.BASE_URL;
   </div>
 </section>
 
-</Base>
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <img src="rehabit_logo_square.png" alt="リハビット" style="height:28px;">
+      <p class="foot-tagline">財務を読み、制度を読み、人を読む。<br>医療・介護組織の「病理」を診断する。</p>
+    </div>
+    <div>
+      <div class="foot-col-ttl">Services</div>
+      <ul class="foot-links">
+        <li><a href="#">医療機関・介護機関 経営コンサル</a></li>
+        <li><a href="#">産業医・労働衛生コンサルティング</a></li>
+        <li><a href="#">リハビリテーション事業支援</a></li>
+        <li><a href="#">研修・講話</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-col-ttl">Company</div>
+      <ul class="foot-links">
+        <li><a href="#">コンセプト</a></li>
+        <li><a href="#">代表プロフィール</a></li>
+        <li><a href="#">ブログ・コラム</a></li>
+        <li><a href="#">企業情報</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span class="foot-copy">© 2025 Rehabit Corp. All rights reserved.</span>
+    <span class="foot-corp">東京都新宿区 / 神奈川県相模原市</span>
+  </div>
+</footer>
+
+</body>
+<script>
+function switchTab(tab) {
+  // ボタンのスタイル切り替え
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.tab === tab) btn.classList.add('active');
+  });
+  // コンテンツ切り替え
+  ['concept', 'why'].forEach(sec => {
+    const medical = document.getElementById(sec + '-medical');
+    const corporate = document.getElementById(sec + '-corporate');
+    if (medical) medical.style.display = tab === 'medical' ? '' : 'none';
+    if (corporate) corporate.style.display = tab === 'corporate' ? '' : 'none';
+  });
+  // Conceptセクションにスクロール
+  document.getElementById('concept').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</html>
