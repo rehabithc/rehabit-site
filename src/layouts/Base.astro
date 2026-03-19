@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  isSubPage?: boolean;
+}
+
+const { title, description = '株式会社リハビット | 組織の医師', isSubPage = false } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+{isSubPage ? (
+  <nav>
+    <a href="/" class="nav-logo"><img src="/rehabit_logo_square.png" alt="株式会社リハビット"></a>
+    <a href="/" class="nav-back">トップへ戻る</a>
+    <a href="#contact" class="nav-cta">お問い合わせ</a>
+  </nav>
+) : (
+  <nav>
+    <a href="#" class="nav-logo"><img src="/rehabit_logo_square.png" alt="株式会社リハビット"></a>
+    <ul class="nav-links">
+      <li><a href="/#concept">コンセプト</a></li>
+      <li><a href="/#services">サービス</a></li>
+      <li><a href="/#why">選ばれる理由</a></li>
+      <li><a href="/#profile">代表紹介</a></li>
+      <li><a href="/blog">ブログ</a></li>
+    </ul>
+    <a href="/#contact" class="nav-cta">お問い合わせ</a>
+  </nav>
+)}
+
+<slot />
+
+{isSubPage ? (
+  <footer class="sub">
+    <div class="foot-inner-sub">
+      <a href="/" class="foot-logo"><img src="/rehabit_logo_square.png" alt="株式会社リハビット"></a>
+      <span class="foot-copy">© 2025 Rehabit Corp. All rights reserved.</span>
+    </div>
+  </footer>
+) : (
+  <footer>
+    <div class="foot-inner">
+      <div>
+        <img src="/rehabit_logo_square.png" alt="リハビット" style="height:28px;">
+        <p class="foot-tagline">財務を読み、制度を読み、人を読む。<br>医療・介護組織の「病理」を診断する。</p>
+      </div>
+      <div>
+        <div class="foot-col-ttl">Services</div>
+        <ul class="foot-links">
+          <li><a href="#">医療機関・介護機関 経営コンサル</a></li>
+          <li><a href="#">産業医・労働衛生コンサルティング</a></li>
+          <li><a href="#">リハビリテーション事業支援</a></li>
+          <li><a href="#">研修・講話</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-col-ttl">Company</div>
+        <ul class="foot-links">
+          <li><a href="#">コンセプト</a></li>
+          <li><a href="#">代表プロフィール</a></li>
+          <li><a href="#">ブログ・コラム</a></li>
+          <li><a href="#">企業情報</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="foot-copy">© 2025 Rehabit Corp. All rights reserved.</span>
+      <span class="foot-corp">東京都新宿区 / 神奈川県相模原市</span>
+    </div>
+  </footer>
+)}
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  site: 'https://rehabit-health.com',
+  base: '/',
+  output: 'static',
+});

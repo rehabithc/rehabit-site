@@ -1,0 +1,271 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="産業医・労働衛生コンサルティング | 株式会社リハビット" isSubPage={true}>
+
+<style is:global>
+.hero{padding:148px 52px 100px;max-width:1100px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--tx3);letter-spacing:.06em;margin-bottom:32px;}
+.breadcrumb a{color:var(--tx3);transition:color .18s;}
+.breadcrumb a:hover{color:var(--tx2);}
+.breadcrumb span{opacity:.4;}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:24px;}
+.eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--orange);flex-shrink:0;}
+.hero-h{font-family:var(--jp);font-size:clamp(32px,3.6vw,50px);font-weight:600;line-height:1.55;letter-spacing:.04em;color:var(--tx1);margin-bottom:20px;}
+.hero-h .oc{color:var(--orange);}
+.hero-en{font-family:var(--en);font-style:italic;font-size:13px;color:var(--tx3);letter-spacing:.06em;margin-bottom:36px;}
+.hero-lead{font-family:var(--jp);font-size:15px;color:var(--tx2);line-height:2.1;max-width:680px;}
+.sec{padding:100px 0;border-top:0.5px solid var(--bd);}
+.sec.alt{background:var(--bg2);}
+.si{max-width:1100px;margin:0 auto;padding:0 52px;}
+.sec-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:20px;}
+.sec-ey::before{content:'';display:block;width:20px;height:1.5px;background:var(--orange);}
+.sec-h{font-family:var(--jp);font-size:clamp(22px,2.4vw,32px);font-weight:600;line-height:1.58;color:var(--tx1);margin-bottom:40px;}
+.pains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.pain-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:28px 26px;position:relative;overflow:hidden;transition:border-color .2s;}
+.pain-card:hover{border-color:var(--bd2);}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.pain-card:nth-child(1)::before,.pain-card:nth-child(4)::before{background:var(--blue);}
+.pain-card:nth-child(2)::before,.pain-card:nth-child(5)::before{background:var(--orange);}
+.pain-card:nth-child(3)::before,.pain-card:nth-child(6)::before{background:var(--blue-l);}
+.pain-q{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--orange);margin-bottom:12px;}
+.pain-title{font-family:var(--jp);font-size:15px;font-weight:600;color:var(--tx1);line-height:1.6;margin-bottom:10px;}
+.pain-desc{font-family:var(--jp);font-size:12.5px;color:var(--tx2);line-height:1.85;}
+.strengths-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.strength-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:32px 30px;position:relative;overflow:hidden;transition:border-color .2s;}
+.strength-card:hover{border-color:var(--bd2);}
+.sbar{position:absolute;left:0;top:0;bottom:0;width:3px;}
+.strength-card:nth-child(1) .sbar{background:var(--blue);}
+.strength-card:nth-child(2) .sbar{background:var(--orange);}
+.strength-card:nth-child(3) .sbar{background:var(--blue-l);}
+.strength-card:nth-child(4) .sbar{background:var(--orange);}
+.s-num{font-family:var(--en);font-size:10px;letter-spacing:.14em;color:var(--tx3);margin-bottom:10px;}
+.s-title{font-family:var(--jp);font-size:16px;font-weight:600;color:var(--tx1);margin-bottom:12px;line-height:1.5;}
+.s-body{font-family:var(--jp);font-size:13px;color:var(--tx2);line-height:1.9;}
+.svc-wrap{display:flex;flex-direction:column;border:0.5px solid var(--bd);border-radius:4px;overflow:hidden;}
+.svc-row{display:grid;grid-template-columns:200px 1fr;border-bottom:0.5px solid var(--bd);}
+.svc-row:last-child{border-bottom:none;}
+.svc-label{padding:28px 24px;background:var(--bg3);border-right:0.5px solid var(--bd);display:flex;align-items:center;}
+.svc-label-text{font-family:var(--jp);font-size:13px;font-weight:600;color:var(--tx1);line-height:1.6;}
+.svc-label-sub{font-size:10px;color:var(--tx3);margin-top:4px;letter-spacing:.08em;}
+.svc-content{padding:28px 28px;background:var(--bg2);}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.svc-list li{font-family:var(--jp);font-size:13px;color:var(--tx2);display:flex;align-items:baseline;gap:10px;line-height:1.7;}
+.svc-list li::before{content:'—';color:var(--blue-l);font-size:11px;flex-shrink:0;}
+.pricing-wrap{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;overflow:hidden;}
+.pricing-head{padding:24px 32px;border-bottom:0.5px solid var(--bd);display:flex;justify-content:space-between;align-items:center;}
+.pricing-title{font-family:var(--jp);font-size:16px;font-weight:600;color:var(--tx1);}
+.pricing-badge{font-size:10px;font-weight:600;letter-spacing:.12em;padding:5px 12px;background:var(--blue);color:#fff;border-radius:2px;text-transform:uppercase;}
+.pricing-body{padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.pricing-label{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--tx3);text-transform:uppercase;margin-bottom:10px;}
+.pricing-val{font-family:var(--jp);font-size:14px;color:var(--tx2);line-height:1.9;}
+.pricing-note{padding:20px 32px;border-top:0.5px solid var(--bd);font-family:var(--jp);font-size:12.5px;color:var(--tx3);line-height:1.85;}
+.cta-band{padding:96px 0;background:var(--blue);position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:52px 52px;}
+.cta-band::after{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(244,164,7,.22) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 52px;display:flex;justify-content:space-between;align-items:center;gap:48px;}
+.cta-h{font-family:var(--jp);font-size:clamp(20px,2.2vw,30px);font-weight:600;color:#fff;line-height:1.6;margin-bottom:14px;}
+.cta-sub{font-family:var(--jp);font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.9;}
+.cta-acts{display:flex;flex-direction:column;gap:12px;flex-shrink:0;}
+.btn-cw{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 36px;background:#fff;color:var(--blue);border-radius:3px;text-align:center;transition:opacity .18s;white-space:nowrap;}
+.btn-cw:hover{opacity:.92;color:var(--blue);}
+.btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 36px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
+.btn-co:hover{border-color:#fff;}
+.hero>*{animation:fadeUp .6s ease both;}
+.hero>*:nth-child(1){animation-delay:.05s;}.hero>*:nth-child(2){animation-delay:.12s;}.hero>*:nth-child(3){animation-delay:.2s;}.hero>*:nth-child(4){animation-delay:.28s;}.hero>*:nth-child(5){animation-delay:.38s;}
+</style>
+
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">トップ</a><span>/</span><span>産業医・労働衛生コンサルティング</span>
+  </div>
+  <div class="eyebrow">Occupational Health</div>
+  <h1 class="hero-h">
+    社員の不調は、<br>
+    組織の<span class="oc">リスク</span>である。
+  </h1>
+  <p class="hero-en">Occupational health as organisational governance, not just employee welfare.</p>
+  <p class="hero-lead">
+    メンタルヘルス不調・過重労働・休職の長期化——いずれも放置すれば、機会損失・訴訟リスク・採用コストの増大として経営に跳ね返ります。社員の健康と幸福を整えることは、組織の成果を上げるための経営課題です。様々な組織のガバナンスを見てきた専門家の目線で、提案から解決まで伴走します。
+  </p>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">Common Issues</div>
+    <h2 class="sec-h">こんな課題はありませんか？</h2>
+    <div class="pains-grid">
+      <div class="pain-card">
+        <div class="pain-q">メンタルヘルス</div>
+        <div class="pain-title">休職者が増えているが、何が原因かつかめていない</div>
+        <div class="pain-desc">個人の問題として扱っているが、実は職場環境・マネジメント・業務設計に根本原因があることが多い。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">復職支援</div>
+        <div class="pain-title">復職させても再休職を繰り返し、対応に疲弊している</div>
+        <div class="pain-desc">本人・上司・人事が三者三様に動いており、一貫した復職プランと職場調整が機能していない。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">体制構築</div>
+        <div class="pain-title">50人を超えたが、衛生委員会や産業医契約をどう始めればよいかわからない</div>
+        <div class="pain-desc">法律上の義務はわかっていても、実際の立ち上げ方・運用・費用感が不透明で踏み出せていない。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">過重労働</div>
+        <div class="pain-title">長時間労働が常態化しており、面談はしているが改善につながっていない</div>
+        <div class="pain-desc">面談記録は残っているが、業務量・人員配置・マネジメントへのフィードバックが機能していない。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">身体不調</div>
+        <div class="pain-title">腰痛・肩こりなど身体の不調による欠勤・生産性低下が気になる</div>
+        <div class="pain-desc">健康診断は実施しているが、日常的な身体不調へのアプローチが産業医に相談しにくい雰囲気がある。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">組織風土</div>
+        <div class="pain-title">ストレスチェックの結果が悪いが、どう活かせばいいかわからない</div>
+        <div class="pain-desc">集団分析のレポートは受け取っているが、具体的なアクションに落とし込めていない。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="sec" style="background:var(--bg0);">
+  <div class="si">
+    <div class="sec-ey">Why Rehabit</div>
+    <h2 class="sec-h">リハビットの産業医が選ばれる理由</h2>
+    <div class="strengths-grid">
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">01</div>
+        <div class="s-title">産業保健を「経営リスク管理」として捉える</div>
+        <div class="s-body">機会損失・訴訟リスク・採用コストの増大——健康問題を放置した場合の経営インパクトを数字で示し、投資対効果として経営層に提案します。「コスト部門」ではなく「リスクヘッジと成果向上の手段」として産業保健を位置づけます。</div>
+      </div>
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">02</div>
+        <div class="s-title">メンタルと身体、両面から診られる</div>
+        <div class="s-body">リハビリテーション科専門医として筋骨格系の診断・治療知識を持ち、腰痛・肩こりなど職場で起きやすい身体不調にも対応。精神科医・女性医師との連携体制も整えています。</div>
+      </div>
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">03</div>
+        <div class="s-title">多様な組織のガバナンスを見てきた専門家の眼</div>
+        <div class="s-body">ベンチャー・外資系・医療法人・介護事業者・行政機関——業種や規模を問わず多様な組織の内側に入り、ガバナンスの実態を見てきました。その横断的な経験から、「他の組織ではどうしているか」を踏まえた具体的な改善提案ができます。</div>
+      </div>
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">04</div>
+        <div class="s-title">直接対応で、迅速・柔軟・安価に</div>
+        <div class="s-body">担当医師が直接スケジュール調整を行うため、紹介会社を介するより柔軟で迅速な対応が可能です。50人未満の小規模事業場にも、規模と状況に応じた対応をしています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec alt">
+  <div class="si">
+    <div class="sec-ey">Service Content</div>
+    <h2 class="sec-h">業務内容</h2>
+    <div class="svc-wrap">
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">法定業務</div><div class="svc-label-sub">Statutory</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>定期健康診断の結果に基づく就業判定・保健指導</li>
+            <li>長時間労働者・高ストレス者への面談</li>
+            <li>職場巡視（月1回または2ヶ月1回）</li>
+            <li>衛生委員会への出席・議事への助言</li>
+            <li>ストレスチェックの実施・集団分析・フィードバック</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">復職・メンタル支援</div><div class="svc-label-sub">Mental Health</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>休職者との面談・復職判定・職場復帰プランの策定</li>
+            <li>主治医・人事・上司の三者調整と地均し対応</li>
+            <li>管理職向けメンタルヘルス研修・ラインケア教育</li>
+            <li>再休職防止のための職場環境・業務設計の見直し提案</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">組織コンサルティング</div><div class="svc-label-sub">Organisation</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>ストレスチェック集団分析を活用した職場改善ワークショップ</li>
+            <li>衛生委員会の立ち上げ・年間計画策定・運営支援</li>
+            <li>人事・管理職への随時相談対応（オンライン可）</li>
+            <li>労働衛生管理体制・規程・マニュアルの整備支援</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">ストレスチェック<br>システム提供（予定）</div><div class="svc-label-sub">Stress Check System</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>独自開発のストレスチェックシステムを提供——実施から集団分析・産業医フィードバックまで一貫して対応</li>
+            <li>法定要件を満たしつつ、組織の課題把握に使いやすい設計</li>
+            <li>結果データをもとにした職場改善アクションまで一気通貫でサポート</li>
+            <li>外部システムへの切り替えコスト・連携コストが不要</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">研修・教育</div><div class="svc-label-sub">Training</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>新入社員・管理職・幹部向けのメンタルヘルス・健康管理研修</li>
+            <li>腰痛・肩こり・眼精疲労など身体不調の予防講話</li>
+            <li>仕事のパフォーマンスを上げる体調管理・セルフケア研修</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">Pricing</div>
+    <h2 class="sec-h">体制・料金</h2>
+    <div class="pricing-wrap">
+      <div class="pricing-head">
+        <div class="pricing-title">嘱託産業医（月額顧問）</div>
+        <div class="pricing-badge">初回相談 無料</div>
+      </div>
+      <div class="pricing-body">
+        <div>
+          <div class="pricing-label">対応エリア</div>
+          <div class="pricing-val">東京都全域・神奈川県相模原市周辺<br>ITベンチャー・外資系企業は全国対応（リモート可）<br>50人未満の小規模事業場も相談可</div>
+        </div>
+        <div>
+          <div class="pricing-label">料金の目安</div>
+          <div class="pricing-val">事務職主体・50人超の事業場（新規立ち上げ）<br>月額 10万円〜（税別・交通費実費）<br>規模・内容・頻度により変動します</div>
+        </div>
+      </div>
+      <div class="pricing-note">医師会提示の相場や紹介会社経由の場合より安価にご提供しています。担当医師が直接対応するため、派遣会社のマージンが発生しません。ストレスチェックシステムの提供については別途ご相談ください。まずは現状とご希望をお聞かせください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contact">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-h">産業保健を、<br>経営の武器にしませんか。</h2>
+      <p class="cta-sub">初回相談は無料です。リスクの洗い出しから始めることもできます。<br>「何から手をつければいいかわからない」という段階からお手伝いします。</p>
+    </div>
+    <div class="cta-acts">
+      <a href="mailto:info@rehabit-health.com" class="btn-cw">メールでお問い合わせ</a>
+      <a href="https://www.rehabit-health.com/お問い合わせ産業医" class="btn-co">フォームでお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+</Base>

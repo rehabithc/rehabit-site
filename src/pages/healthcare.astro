@@ -1,0 +1,309 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="医療機関・介護機関 経営コンサルティング | 株式会社リハビット" isSubPage={true}>
+
+<style is:global>
+/* ── HERO ── */
+.hero{padding:148px 52px 100px;max-width:1100px;margin:0 auto;position:relative;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--tx3);letter-spacing:.06em;margin-bottom:32px;}
+.breadcrumb a{color:var(--tx3);transition:color .18s;}
+.breadcrumb a:hover{color:var(--tx2);}
+.breadcrumb span{opacity:.4;}
+
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:24px;}
+.eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--orange);flex-shrink:0;}
+
+.hero-h{font-family:var(--jp);font-size:clamp(32px,3.6vw,50px);font-weight:600;line-height:1.55;letter-spacing:.04em;color:var(--tx1);margin-bottom:20px;}
+.hero-h .oc{color:var(--orange);}
+
+.hero-en{font-family:var(--en);font-style:italic;font-size:13px;color:var(--tx3);letter-spacing:.06em;margin-bottom:36px;}
+
+.hero-lead{font-family:var(--jp);font-size:15px;color:var(--tx2);line-height:2.1;max-width:680px;}
+
+/* ── SECTION BASE ── */
+.sec{padding:100px 0;border-top:0.5px solid var(--bd);}
+.sec.alt{background:var(--bg2);}
+.si{max-width:1100px;margin:0 auto;padding:0 52px;}
+.sec-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:20px;}
+.sec-ey::before{content:'';display:block;width:20px;height:1.5px;background:var(--orange);}
+.sec-h{font-family:var(--jp);font-size:clamp(22px,2.4vw,32px);font-weight:600;line-height:1.58;color:var(--tx1);margin-bottom:40px;}
+
+/* ── PAIN POINTS ── */
+.pains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.pain-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:28px 26px;position:relative;overflow:hidden;transition:border-color .2s;}
+.pain-card:hover{border-color:var(--bd2);}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue);}
+.pain-card:nth-child(2)::before{background:var(--orange);}
+.pain-card:nth-child(3)::before,.pain-card:nth-child(6)::before{background:var(--blue-l);}
+.pain-card:nth-child(4)::before{background:var(--orange);}
+.pain-card:nth-child(5)::before{background:var(--blue);}
+.pain-q{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--orange);margin-bottom:12px;}
+.pain-title{font-family:var(--jp);font-size:15px;font-weight:600;color:var(--tx1);line-height:1.6;margin-bottom:10px;}
+.pain-desc{font-family:var(--jp);font-size:12.5px;color:var(--tx2);line-height:1.85;}
+
+/* ── APPROACH ── */
+.approach-steps{display:flex;flex-direction:column;gap:0;}
+.step{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:44px 0;border-bottom:0.5px solid var(--bd);align-items:start;}
+.step:first-child{padding-top:0;}
+.step-num-wrap{display:flex;flex-direction:column;align-items:center;gap:0;padding-top:4px;}
+.step-num{font-family:var(--en);font-size:11px;letter-spacing:.12em;color:var(--blue-l);margin-bottom:8px;}
+.step-dot{width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+.step-line{width:1px;height:calc(100% + 44px);background:var(--bd);margin-top:6px;}
+.step:last-child .step-line{display:none;}
+.step-content{}
+.step-tag{font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--blue-l);text-transform:uppercase;margin-bottom:10px;}
+.step-title{font-family:var(--jp);font-size:18px;font-weight:600;color:var(--tx1);margin-bottom:14px;line-height:1.5;}
+.step-body{font-family:var(--jp);font-size:13.5px;color:var(--tx2);line-height:2.0;}
+.step-detail{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.step-item{display:flex;align-items:baseline;gap:10px;font-family:var(--jp);font-size:13px;color:var(--tx2);}
+.step-item::before{content:'—';color:var(--blue-l);flex-shrink:0;font-size:11px;}
+
+/* ── RESULTS ── */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
+.result-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:32px 28px;text-align:center;}
+.result-num{font-family:var(--en);font-size:42px;color:var(--tx1);line-height:1;margin-bottom:8px;}
+.result-num .unit{font-size:20px;color:var(--orange);}
+.result-num .arrow{font-size:16px;color:var(--tx3);margin:0 4px;}
+.result-label{font-family:var(--jp);font-size:12px;color:var(--tx3);line-height:1.7;}
+
+.result-note{font-family:var(--jp);font-size:13px;color:var(--tx2);line-height:2.0;padding:28px 32px;background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;border-left:3px solid var(--blue);}
+
+/* ── MENU ── */
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.menu-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:32px 30px;transition:border-color .2s;}
+.menu-card:hover{border-color:var(--bd2);}
+.menu-tag{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px;}
+.menu-title{font-family:var(--jp);font-size:17px;font-weight:600;color:var(--tx1);margin-bottom:14px;line-height:1.5;}
+.menu-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.menu-list li{font-family:var(--jp);font-size:13px;color:var(--tx2);display:flex;align-items:baseline;gap:10px;}
+.menu-list li::before{content:'·';color:var(--orange);font-size:16px;flex-shrink:0;line-height:1;}
+.menu-note{margin-top:20px;padding-top:16px;border-top:0.5px solid var(--bd);font-family:var(--jp);font-size:12px;color:var(--tx3);line-height:1.8;}
+
+/* ── CTA ── */
+.cta-band{padding:96px 0;background:var(--blue);position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:52px 52px;}
+.cta-band::after{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(244,164,7,.22) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 52px;display:flex;justify-content:space-between;align-items:center;gap:48px;}
+.cta-h{font-family:var(--jp);font-size:clamp(20px,2.2vw,30px);font-weight:600;color:#fff;line-height:1.6;margin-bottom:14px;}
+.cta-sub{font-family:var(--jp);font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.9;}
+.cta-acts{display:flex;flex-direction:column;gap:12px;flex-shrink:0;}
+.btn-cw{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 36px;background:#fff;color:var(--blue);border-radius:3px;text-align:center;transition:opacity .18s;white-space:nowrap;}
+.btn-cw:hover{opacity:.92;color:var(--blue);}
+.btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 36px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
+.btn-co:hover{border-color:#fff;}
+
+/* ── ANIM ── */
+.hero>*{animation:fadeUp .6s ease both;}
+.hero>*:nth-child(1){animation-delay:.05s;}
+.hero>*:nth-child(2){animation-delay:.12s;}
+.hero>*:nth-child(3){animation-delay:.2s;}
+.hero>*:nth-child(4){animation-delay:.28s;}
+.hero>*:nth-child(5){animation-delay:.38s;}
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">トップ</a>
+    <span>/</span>
+    <span>医療機関・介護機関 経営コンサルティング</span>
+  </div>
+  <div class="eyebrow">Healthcare Management</div>
+  <h1 class="hero-h">
+    経営と現場の間で、<br>
+    止まっている課題が<span class="oc">ある</span>。
+  </h1>
+  <p class="hero-en">Financial diagnosis, policy foresight, and organisational reform for healthcare.</p>
+  <p class="hero-lead">
+    収益が読めない、人が定着しない、制度の変化に追いつけない——<br>
+    病院・介護施設が抱える問題の多くは、財務・制度・組織の三層に同時に根を張っています。<br>
+    治療にアフターフォローが当然であるように、アドバイスで終わらず、伴走し、結果を確かめ、ともに喜び合うコンサルティングを行います。
+  </p>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">Common Issues</div>
+    <h2 class="sec-h">こんな課題はありませんか？</h2>
+    <div class="pains-grid">
+      <div class="pain-card">
+        <div class="pain-q">財務</div>
+        <div class="pain-title">収益構造がわからないまま、なんとなく経営している</div>
+        <div class="pain-desc">損益計算書は見ているが、どの部門が利益を生んでいるか・どこがボトルネックかが把握できていない。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">制度</div>
+        <div class="pain-title">制度改定のたびに対応に追われ、先を見た戦略が立てられない</div>
+        <div class="pain-desc">改定内容は把握しているが、自院への影響と中長期の方向性をどう読むか、専門家に相談する機会がない。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">組織</div>
+        <div class="pain-title">病床稼働率が上がらず、空床が常態化している</div>
+        <div class="pain-desc">入退院の流れ・地域連携・スタッフの動き方——どこに手を入れればよいか、全体像が見えていない。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">人材</div>
+        <div class="pain-title">医師・コメディカルの定着率が低く、採用コストがかさんでいる</div>
+        <div class="pain-desc">給与だけの問題ではなく、職場環境・キャリアパス・マネジメントの課題が絡み合っている。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">評価</div>
+        <div class="pain-title">病院機能評価の取得・更新に向けて何から手をつければよいかわからない</div>
+        <div class="pain-desc">書類整備だけでなく、実態として評価基準を満たす組織づくりが求められている。</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-q">DX</div>
+        <div class="pain-title">電子カルテや業務ツールを導入したが、現場に定着していない</div>
+        <div class="pain-desc">ツールの問題ではなく、運用設計・研修・文化の問題として取り組む必要がある。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="sec" style="background:var(--bg0);">
+  <div class="si">
+    <div class="sec-ey">Our Approach</div>
+    <h2 class="sec-h">リハビットのアプローチ</h2>
+    <div class="approach-steps">
+
+      <div class="step">
+        <div class="step-num-wrap">
+          <div class="step-num">Step 01</div>
+          <div class="step-dot"></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag">Financial Diagnosis</div>
+          <div class="step-title">財務の「病理」を診断する</div>
+          <div class="step-body">損益計算書・貸借対照表・資金繰り表を医師の目で読み解き、収益構造の歪みと改善余地を特定します。「なんとなく黒字」「なんとなく苦しい」を数字で言語化するところから始めます。</div>
+          <div class="step-detail">
+            <div class="step-item">部門別収支・稼働率・単価の三面分析</div>
+            <div class="step-item">他院ベンチマークとの比較による課題の可視化</div>
+            <div class="step-item">改善施策の効果を数字で試算し、経営層への提案資料を作成</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-wrap">
+          <div class="step-num">Step 02</div>
+          <div class="step-dot" style="background:var(--orange);"></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag" style="color:var(--orange-l);">Policy Foresight</div>
+          <div class="step-title">制度の変化を先読みし、戦略を描く</div>
+          <div class="step-body">厚生労働省での政策立案経験と日本医療機能評価機構での実務を通じて培った「制度を読む眼」で、2〜5年後の医療・介護政策の方向性を読み解きます。今の経営判断が将来の制度変化にどう影響するかを、具体的な数字と施策に落とし込みます。</div>
+          <div class="step-detail">
+            <div class="step-item">直近の制度改定が自院に与えるインパクト試算</div>
+            <div class="step-item">機能転換・病床再編の方向性検討</div>
+            <div class="step-item">地域医療構想との整合性確認と対応シナリオの作成</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-wrap">
+          <div class="step-num">Step 03</div>
+          <div class="step-dot" style="background:var(--blue-l);"></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag" style="color:var(--blue-l);">Organisation Reform</div>
+          <div class="step-title">組織の内側に入り、手を動かす</div>
+          <div class="step-body">外から提言するだけでなく、産業医・顧問医師として組織の内側に定期的に入り、現場の実態を把握しながら改善を進めます。会議のファシリテーション・カンファレンスの設計・スタッフ研修まで、「提案して終わり」にしません。</div>
+          <div class="step-detail">
+            <div class="step-item">病床稼働管理ダッシュボードの設計・運用支援</div>
+            <div class="step-item">入退院フロー・地域連携プロセスの改善</div>
+            <div class="step-item">管理職・スタッフ向け研修・ファシリテーション</div>
+            <div class="step-item">病院機能評価の取得・更新サポート</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec alt">
+  <div class="si">
+    <div class="sec-ey">Track Record</div>
+    <h2 class="sec-h">支援実績</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-num">94<span class="arrow">→</span>99<span class="unit">%</span></div>
+        <div class="result-label">回復期リハビリテーション病棟<br>病床占有率の改善</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">1,000<span class="unit">+</span></div>
+        <div class="result-label">医師・コメディカル・管理職向け<br>講話・研修の実施回数</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">15<span class="unit">+</span></div>
+        <div class="result-label">病院・介護施設・クリニックへの<br>支援実績（施設数）</div>
+      </div>
+    </div>
+    <div class="result-note">
+      支援実績の詳細はご要望に応じてお伝えします。守秘義務の観点から施設名は公開しておりませんが、初回相談の際に具体的な事例をお話しすることが可能です。
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">Service Menu</div>
+    <h2 class="sec-h">支援メニュー</h2>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-tag">Spot Consulting</div>
+        <div class="menu-title">スポット相談・単発コンサルティング</div>
+        <ul class="menu-list">
+          <li>財務分析レポートの作成（1〜3回）</li>
+          <li>制度改定の自院インパクト試算</li>
+          <li>病院機能評価の事前チェック</li>
+          <li>経営会議・理事会への同席・助言</li>
+          <li>特定テーマの研修・講話（単発）</li>
+        </ul>
+        <div class="menu-note">まず一度、課題を整理したい場合にご活用ください。初回相談は無料です。</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-tag">Ongoing Support</div>
+        <div class="menu-title">継続顧問・伴走支援</div>
+        <ul class="menu-list">
+          <li>月次経営数値のモニタリングと助言</li>
+          <li>定期的な現場訪問・会議参加</li>
+          <li>管理職・スタッフへの継続的な研修</li>
+          <li>地域連携・病床管理の継続改善</li>
+          <li>DXツール導入・定着支援</li>
+        </ul>
+        <div class="menu-note">顧問料は施設規模・支援内容により異なります。まずはご相談ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contact">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-h">
+        経営の「かかりつけ医」を、<br>持ちませんか。
+      </h2>
+      <p class="cta-sub">
+        初回相談は無料です。財務・制度・組織——どこから入っても構いません。<br>
+        「うまく言語化できない」課題こそ、医師の目で整理します。
+      </p>
+    </div>
+    <div class="cta-acts">
+      <a href="mailto:info@rehabit-health.com" class="btn-cw">メールでお問い合わせ</a>
+      <a href="https://www.rehabit-health.com/お問い合わせリハビリ" class="btn-co">フォームでお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+</Base>

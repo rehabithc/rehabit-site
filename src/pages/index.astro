@@ -1,0 +1,368 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="株式会社リハビット | 組織の医師">
+
+<style is:global>
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 75% 75% at 72% 50%,black 20%,transparent 75%);}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:130px 56px 110px 52px;position:relative;z-index:2;}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;}
+.eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--orange);flex-shrink:0;}
+.hero-h1{font-family:var(--jp);font-size:clamp(34px,3.8vw,54px);font-weight:600;line-height:1.55;letter-spacing:.04em;color:var(--tx1);margin-bottom:16px;}
+.hero-h1 .oc{color:var(--orange);}
+.hero-h1 .bc{color:var(--blue-l);}
+.hero-en{font-family:var(--en);font-style:italic;font-size:12.5px;color:var(--tx3);letter-spacing:.06em;margin-bottom:34px;line-height:1.6;}
+.hero-body{font-family:var(--jp);font-size:14px;color:var(--tx2);line-height:2.05;max-width:400px;margin-bottom:50px;}
+.hero-actions{display:flex;gap:20px;align-items:center;}
+.btn-p{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 34px;background:var(--blue);color:#fff;border-radius:3px;border:1.5px solid var(--blue);transition:background .18s,transform .15s;}
+.btn-p:hover{background:var(--blue-l);border-color:var(--blue-l);transform:translateY(-1px);color:#fff;}
+.btn-g{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--tx2);border-bottom:0.5px solid var(--tx3);padding-bottom:2px;transition:color .18s,border-color .18s;}
+.btn-g:hover{color:var(--tx1);border-color:var(--tx1);}
+.btn-g::after{content:'→';}
+
+.hero-right{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;}
+.glow1{position:absolute;width:460px;height:460px;background:radial-gradient(circle,rgba(38,80,162,.22) 0%,transparent 68%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.glow2{position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(244,164,7,.14) 0%,transparent 68%);top:44%;left:56%;transform:translate(-50%,-50%);pointer-events:none;}
+
+.hero-stats{position:absolute;bottom:44px;left:52px;right:0;display:flex;gap:0;z-index:2;}
+.stat-i{padding:18px 32px;border-left:0.5px solid var(--bd);}
+.stat-i:first-child{padding-left:0;border-left:none;}
+.stat-n{font-family:var(--en);font-size:26px;color:var(--tx1);line-height:1;margin-bottom:6px;}
+.stat-n span{color:var(--orange);font-size:15px;}
+.stat-l{font-size:11px;color:var(--tx3);font-family:var(--jp);line-height:1.55;}
+
+/* ── CONCEPT ── */
+.sec{padding:120px 0;border-top:0.5px solid var(--bd);}
+.sec.alt{background:var(--bg2);}
+.si{max-width:1100px;margin:0 auto;padding:0 52px;}
+.sec-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:20px;}
+.sec-ey::before{content:'';display:block;width:20px;height:1.5px;background:var(--orange);}
+.sec-h{font-family:var(--jp);font-size:clamp(22px,2.6vw,34px);font-weight:600;line-height:1.58;color:var(--tx1);}
+
+.concept-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.concept-body{font-family:var(--jp);font-size:13.5px;color:var(--tx2);line-height:2.1;margin-top:28px;}
+.concept-body p+p{margin-top:1.3em;}
+
+.pillars{display:flex;flex-direction:column;gap:14px;}
+.pillar{background:var(--bg2);border:0.5px solid var(--bd);border-radius:4px;padding:24px 26px 22px;position:relative;overflow:hidden;transition:border-color .2s;}
+.pillar:hover{border-color:var(--bd2);}
+.pbar{position:absolute;left:0;top:0;bottom:0;width:3px;}
+.pillar:nth-child(1) .pbar{background:var(--blue);}
+.pillar:nth-child(2) .pbar{background:var(--orange);}
+.pillar:nth-child(3) .pbar{background:var(--blue-l);}
+.p-num{font-family:var(--en);font-size:10px;letter-spacing:.14em;color:var(--tx3);margin-bottom:8px;}
+.p-ttl{font-family:var(--jp);font-size:15px;font-weight:600;color:var(--tx1);margin-bottom:8px;}
+.p-desc{font-family:var(--jp);font-size:12.5px;color:var(--tx2);line-height:1.85;}
+
+/* ── SERVICES ── */
+.svc-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.svc-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:34px 30px 28px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,transform .2s;position:relative;overflow:hidden;cursor:pointer;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .28s ease;}
+.svc-card:nth-child(1)::after{background:var(--blue);}
+.svc-card:nth-child(2)::after{background:var(--orange);}
+.svc-card:nth-child(3)::after{background:var(--blue-l);}
+.svc-card:hover{border-color:var(--bd2);transform:translateY(-3px);}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-tag{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
+.svc-card:nth-child(1) .svc-tag{color:var(--blue-l);}
+.svc-card:nth-child(2) .svc-tag{color:var(--orange-l);}
+.svc-card:nth-child(3) .svc-tag{color:var(--blue-l);}
+.svc-ttl{font-family:var(--jp);font-size:18px;font-weight:600;color:var(--tx1);line-height:1.55;}
+.svc-desc{font-family:var(--jp);font-size:13px;color:var(--tx2);line-height:1.9;flex:1;}
+.svc-more{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);display:flex;align-items:center;gap:6px;transition:color .18s;}
+.svc-more::after{content:'→';}
+.svc-card:hover .svc-more{color:var(--tx1);}
+
+/* ── WHY ── */
+.why-g{display:grid;grid-template-columns:340px 1fr;gap:80px;align-items:start;}
+.why-sticky{position:sticky;top:100px;}
+.why-sub{font-family:var(--jp);font-size:13px;color:var(--tx2);line-height:2.0;margin-top:20px;}
+.why-items{display:flex;flex-direction:column;}
+.why-item{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:34px 0;border-bottom:0.5px solid var(--bd);align-items:start;}
+.why-item:first-child{padding-top:0;}
+.why-num{font-family:var(--en);font-size:12px;color:var(--blue-l);letter-spacing:.08em;padding-top:3px;}
+.why-ttl{font-family:var(--jp);font-size:15px;font-weight:600;color:var(--tx1);margin-bottom:10px;line-height:1.5;}
+.why-body{font-family:var(--jp);font-size:13px;color:var(--tx2);line-height:1.95;}
+
+/* ── PROFILE ── */
+.prof-g{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.photo-frame{width:100%;aspect-ratio:4/5;background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;overflow:hidden;}
+.photo-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(38,80,162,.18),transparent);}
+.photo-badge{position:absolute;bottom:24px;left:24px;background:var(--blue);color:#fff;font-size:10px;font-weight:600;letter-spacing:.1em;padding:8px 14px;border-radius:2px;z-index:1;}
+.photo-ph{font-size:52px;opacity:.12;}
+.photo-lbl{font-size:12px;color:var(--tx3);letter-spacing:.1em;font-family:var(--jp);}
+.prof-name-en{font-family:var(--en);font-style:italic;font-size:13px;color:var(--tx3);letter-spacing:.06em;margin-bottom:8px;}
+.prof-name-jp{font-family:var(--jp);font-size:28px;font-weight:600;color:var(--tx1);letter-spacing:.08em;margin-bottom:6px;}
+.prof-title{font-size:11px;color:var(--orange);letter-spacing:.12em;font-weight:600;text-transform:uppercase;margin-bottom:28px;}
+.prof-body{font-family:var(--jp);font-size:13.5px;color:var(--tx2);line-height:2.05;margin-bottom:32px;}
+.creds{display:flex;flex-wrap:wrap;gap:8px;}
+.cred{font-family:var(--jp);font-size:11px;padding:5px 12px;border:0.5px solid var(--bd2);border-radius:2px;color:var(--tx2);letter-spacing:.03em;}
+
+/* ── CTA BAND ── */
+.cta-band{padding:96px 0;background:var(--blue);position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:52px 52px;}
+.cta-band::after{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(244,164,7,.22) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 52px;display:flex;justify-content:space-between;align-items:center;gap:48px;}
+.cta-h{font-family:var(--jp);font-size:clamp(22px,2.4vw,32px);font-weight:600;color:#fff;line-height:1.55;margin-bottom:14px;}
+.cta-sub{font-family:var(--jp);font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.85;}
+.cta-acts{display:flex;flex-direction:column;gap:12px;flex-shrink:0;}
+.btn-cw{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 34px;background:#fff;color:var(--blue);border-radius:3px;text-align:center;transition:opacity .18s;white-space:nowrap;}
+.btn-cw:hover{opacity:.92;color:var(--blue);}
+.btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 34px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
+.btn-co:hover{border-color:#fff;}
+
+/* ── ANIM ── */
+.hero-left>*{animation:fadeUp .65s ease both;}
+.hero-left>*:nth-child(1){animation-delay:.08s;}
+.hero-left>*:nth-child(2){animation-delay:.18s;}
+.hero-left>*:nth-child(3){animation-delay:.28s;}
+.hero-left>*:nth-child(4){animation-delay:.38s;}
+.hero-left>*:nth-child(5){animation-delay:.50s;}
+.hero-left>*:nth-child(6){animation-delay:.62s;}
+</style>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="eyebrow">Medical × Management Consulting</div>
+    <h1 class="hero-h1">
+      組織を、<br>
+      <span class="oc">診察</span>する。
+    </h1>
+    <p class="hero-en">A physician's eye on management, policy, and people.</p>
+    <p class="hero-body">
+      「なぜ収益が戻らないのか」「なぜ人が定着しないのか」<br>
+      答えは財務にも、診療報酬にも、職場の空気にも、<br>
+      同時に潜んでいます。<br>
+      ——その問いに、医師の目線で向き合います。
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-p">サービスを見る</a>
+      <a href="#concept" class="btn-g">私たちのアプローチ</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="glow1"></div>
+    <div class="glow2"></div>
+    <svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.75;position:relative;z-index:1;">
+      <!-- Orbital rings -->
+      <circle cx="240" cy="240" r="172" stroke="#2650A2" stroke-width="0.5" stroke-dasharray="5 6" opacity=".22"/>
+      <circle cx="240" cy="240" r="112" stroke="#3A68C0" stroke-width="0.5" stroke-dasharray="3 5" opacity=".3"/>
+      <!-- Spoke lines -->
+      <line x1="240" y1="240" x2="130" y2="130" stroke="#2650A2" stroke-width="1" stroke-dasharray="4 4" opacity=".45"/>
+      <line x1="240" y1="240" x2="350" y2="130" stroke="#2650A2" stroke-width="1" stroke-dasharray="4 4" opacity=".45"/>
+      <line x1="240" y1="240" x2="130" y2="350" stroke="#3A68C0" stroke-width="1" stroke-dasharray="4 4" opacity=".45"/>
+      <line x1="240" y1="240" x2="350" y2="350" stroke="#F4A407" stroke-width="1.2" stroke-dasharray="4 4" opacity=".5"/>
+      <line x1="240" y1="240" x2="240" y2="88"  stroke="#3A68C0" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <line x1="240" y1="240" x2="88"  y2="240" stroke="#3A68C0" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <line x1="240" y1="240" x2="392" y2="240" stroke="#F4A407" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+      <line x1="240" y1="240" x2="240" y2="392" stroke="#F4A407" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+      <!-- Outer frame -->
+      <line x1="130" y1="130" x2="350" y2="130" stroke="#2650A2" stroke-width="0.5" opacity=".2"/>
+      <line x1="130" y1="350" x2="350" y2="350" stroke="#F4A407" stroke-width="0.5" opacity=".2"/>
+      <line x1="130" y1="130" x2="130" y2="350" stroke="#2650A2" stroke-width="0.5" opacity=".2"/>
+      <line x1="350" y1="130" x2="350" y2="350" stroke="#F4A407" stroke-width="0.5" opacity=".2"/>
+      <!-- Satellite nodes -->
+      <circle cx="130" cy="130" r="8"  fill="#2650A2" opacity=".72"/>
+      <circle cx="130" cy="130" r="14" stroke="#2650A2" stroke-width="0.5" fill="none" opacity=".28"/>
+      <circle cx="350" cy="130" r="8"  fill="#3A68C0" opacity=".72"/>
+      <circle cx="350" cy="130" r="14" stroke="#3A68C0" stroke-width="0.5" fill="none" opacity=".28"/>
+      <circle cx="130" cy="350" r="8"  fill="#3A68C0" opacity=".72"/>
+      <circle cx="350" cy="350" r="10" fill="#F4A407" opacity=".85"/>
+      <circle cx="350" cy="350" r="18" stroke="#F4A407" stroke-width="0.5" fill="none" opacity=".3"/>
+      <circle cx="240" cy="88"  r="5"  fill="#2650A2" opacity=".5"/>
+      <circle cx="88"  cy="240" r="5"  fill="#2650A2" opacity=".5"/>
+      <circle cx="392" cy="240" r="5"  fill="#F4A407" opacity=".6"/>
+      <circle cx="240" cy="392" r="5"  fill="#F4A407" opacity=".6"/>
+      <!-- Node labels -->
+      <text x="130" y="114" text-anchor="middle" fill="#627088" font-size="9" font-family="'Instrument Sans',sans-serif" letter-spacing="1.2">財務診断</text>
+      <text x="350" y="114" text-anchor="middle" fill="#627088" font-size="9" font-family="'Instrument Sans',sans-serif" letter-spacing="1.2">制度設計</text>
+      <text x="130" y="370" text-anchor="middle" fill="#627088" font-size="9" font-family="'Instrument Sans',sans-serif" letter-spacing="1.2">産業保健</text>
+      <text x="350" y="370" text-anchor="middle" fill="#627088" font-size="9" font-family="'Instrument Sans',sans-serif" letter-spacing="1.2">組織改善</text>
+      <!-- Central node -->
+      <circle cx="240" cy="240" r="30" fill="#0E1C30" stroke="#2650A2" stroke-width="1.5"/>
+      <circle cx="240" cy="240" r="20" fill="#2650A2" opacity=".25"/>
+      <circle cx="240" cy="240" r="10" fill="#F4A407"/>
+      <text x="240" y="284" text-anchor="middle" fill="#627088" font-size="10" font-family="'Shippori Mincho',serif" letter-spacing="2.5">組織の医師</text>
+    </svg>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-i">
+      <div class="stat-n">94<span>%→</span>99<span>%</span></div>
+      <div class="stat-l">病床占有率<br>改善実績</div>
+    </div>
+    <div class="stat-i">
+      <div class="stat-n">1,000<span>+</span></div>
+      <div class="stat-l">講話・研修<br>実施回数</div>
+    </div>
+    <div class="stat-i">
+      <div class="stat-n">15<span>+</span></div>
+      <div class="stat-l">医療・介護施設<br>支援実績</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="sec" id="concept" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">Our Approach</div>
+    <div class="concept-g">
+      <div>
+        <h2 class="sec-h">財務を読み、<br>制度を読み、<br>人を読む。</h2>
+        <div class="concept-body">
+          <p>一般的なコンサルタントは経営数字を読めても、現場の医療・介護の文脈を理解できません。一般的な医師は臨床に優れていても、診療報酬の制度設計や財務の論理で語ることができません。</p>
+          <p>リハビットは、リハビリテーション科専門医・産業医・元病院経営者という三位一体のバックグラウンドから、医療機関・介護機関が抱える組織の「病理」を診断し、処方します。</p>
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pbar"></div>
+          <div class="p-num">01 / Finance</div>
+          <div class="p-ttl">財務諸表から経営の病理を診断する</div>
+          <div class="p-desc">損益・貸借・キャッシュフローを読み解き、数字の背後にある構造的問題を特定します。病院特有の診療報酬収入の構造も精緻に分析します。</div>
+        </div>
+        <div class="pillar">
+          <div class="pbar"></div>
+          <div class="p-num">02 / Policy</div>
+          <div class="p-ttl">制度の変化を先読みし、組織を載せる</div>
+          <div class="p-desc">厚生労働省での政策立案経験を活かし、医療・労働・社会保障にわたる制度変化を先読みした組織・機能設計を提案します。</div>
+        </div>
+        <div class="pillar">
+          <div class="pbar"></div>
+          <div class="p-num">03 / Organization</div>
+          <div class="p-ttl">産業医として内側から突破口を開く</div>
+          <div class="p-desc">外部コンサルではなく産業医として組織内部に入り、ハードな数字提案だけでなく、人・文化・チームのソフト面の問題解決まで一貫して支援します。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec alt" id="services">
+  <div class="si">
+    <div class="svc-hdr">
+      <div>
+        <div class="sec-ey">Services</div>
+        <h2 class="sec-h">支援領域</h2>
+      </div>
+      <a href="#contact" class="btn-g" style="color:var(--tx2);">全サービスを見る</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="location.href='/healthcare'" style="cursor:pointer;">
+        <div class="svc-tag">Healthcare Management</div>
+        <div class="svc-ttl">医療機関・介護機関<br>経営コンサルティング</div>
+        <div class="svc-desc">財務分析・制度戦略・組織設計の三軸で、病院・介護施設の経営改善を支援。病床稼働率改善から機能転換・地域連携強化まで、数字で語る提案を行います。</div>
+        <div class="svc-more">詳しく見る</div>
+      </div>
+      <div class="svc-card" onclick="location.href='/occupational'" style="cursor:pointer;">
+        <div class="svc-tag">Occupational Health</div>
+        <div class="svc-ttl">産業医・<br>労働衛生コンサルティング</div>
+        <div class="svc-desc">機会損失・訴訟リスク・採用コストの増大——社員の不調を放置した場合の経営インパクトを数字で示し、組織の成果を上げるための産業保健として提案・実装します。</div>
+        <div class="svc-more">詳しく見る</div>
+      </div>
+      <div class="svc-card" onclick="location.href='/rehab'" style="cursor:pointer;">
+        <div class="svc-tag">Rehabilitation</div>
+        <div class="svc-ttl">リハビリテーション<br>事業支援</div>
+        <div class="svc-desc">回復期病棟・外来リハ・介護保険施設のリハビリ部門に対し、医師の立場から技術・運営・収益の三面を支援。研修・教材開発にも対応します。</div>
+        <div class="svc-more">詳しく見る</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec" id="why" style="background:var(--bg1);">
+  <div class="si">
+    <div class="why-g">
+      <div class="why-sticky">
+        <div class="sec-ey">Why Rehabit</div>
+        <h2 class="sec-h">なぜ、医師が<br>コンサルするのか。</h2>
+        <p class="why-sub">医療現場を知らないコンサルタントと、経営を知らない医師。その間にいる人間が、最も必要とされている。</p>
+      </div>
+      <div class="why-items">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div>
+            <div class="why-ttl">医師・経営者・政策立案者の三役を経験した唯一の視点</div>
+            <div class="why-body">東京大学医学部卒後、臨床医としてリハビリテーション科専門医を取得。診療所院長・事業部長として医院経営を担い、厚生労働省・日本医療機能評価機構への出向で政策と評価の現場も経験。この三つのレイヤーを同時に見渡せる医師は、日本で唯一です。</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div>
+            <div class="why-ttl">「数字を出す」提案で、経営層の意思決定を後押し</div>
+            <div class="why-body">感覚や慣習ではなく、施策の導入効果を数字で試算し、社内稟議を通せる形にします。病床占有率94%→99%への改善も、データドリブンな現場支援の積み重ねです。</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div>
+            <div class="why-ttl">ITと自動化を武器に、提案を現場実装まで届ける</div>
+            <div class="why-body">GAS・Python・Swift・AI APIを自在に扱い、業務改善の提案を「設計だけして終わり」にしません。デジタルツールの導入から運用定着まで一気通貫で支援します。</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div>
+            <div class="why-ttl">1,000回超の講話・研修で培った、人が動く伝え方</div>
+            <div class="why-body">医師・コメディカル・管理職・一般職員まで、相手に合わせた言語で問題を共有し、自律的に動く組織を設計します。知識の移転だけでなく、文化の変容を目指します。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="sec alt" id="profile">
+  <div class="si">
+    <div class="sec-ey">Representative</div>
+    <div class="prof-g">
+      <div>
+        <div class="photo-frame" style="padding:0;">
+          <img src="/prof_photo.jpg" alt="山﨑康太郎" style="width:100%;height:100%;object-fit:cover;border-radius:4px;">
+          <div class="photo-badge">代表取締役　山﨑 康太郎</div>
+        </div>
+      </div>
+      <div>
+        <div class="prof-name-en">Kotaro Yamazaki, MD, MBA cand.</div>
+        <div class="prof-name-jp">山﨑 康太郎</div>
+        <div class="prof-title">代表取締役 / リハビリテーション科専門医 / 産業医・労働衛生コンサルタント</div>
+        <p class="prof-body">
+          1985年東京都生まれ。東京大学医学部卒業後、慶應義塾大学リハビリテーション科に入局し、2016年専門医取得。診療所および病院の院長・株式会社の事業部長として経営を担い、リハビリ病院でセンター長・院長を歴任。病院機能評価の高度専門機能認定取得や電子カルテの導入などをリードするほか、病床稼働管理ツール・ダッシュボードの開発、カンファレンスや会議のフォーマット改変を通した業務の質の向上・効率化を実践。厚生労働省・日本医療機能評価機構への出向で政策立案と医療の質の視点を獲得。<br><br>
+          2026年経営学修士（MBA）取得見込。病院機能評価の審査も担当。株式会社リハビットを通じて医療機関から一般企業まで、組織の課題解決を支援している。
+        </p>
+        <div class="creds">
+          <span class="cred">リハビリテーション科専門医</span>
+          <span class="cred">日本医師会認定産業医</span>
+          <span class="cred">労働衛生コンサルタント</span>
+          <span class="cred">病院機能評価 調査担当</span>
+          <span class="cred">MBA（取得予定）</span>
+          <span class="cred">パラスポーツ医</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contact">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-h">まず、「違和感」を<br>聞かせてください。</h2>
+      <p class="cta-sub">初回相談は無料です。財務・制度・組織——どの切り口からでも構いません。<br>「うまく言語化できない」課題こそ、私たちの出番です。</p>
+    </div>
+    <div class="cta-acts">
+      <a href="mailto:info@rehabit-health.com" class="btn-cw">お問い合わせ（医療機関・介護機関）</a>
+      <a href="mailto:info@rehabit-health.com" class="btn-co">お問い合わせ（産業医サービス）</a>
+    </div>
+  </div>
+</section>
+
+</Base>

@@ -1,0 +1,299 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="リハビリテーション事業支援 | 株式会社リハビット" isSubPage={true}>
+
+<style is:global>
+.hero{padding:148px 52px 100px;max-width:1100px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--tx3);letter-spacing:.06em;margin-bottom:32px;}
+.breadcrumb a{color:var(--tx3);transition:color .18s;}
+.breadcrumb a:hover{color:var(--tx2);}
+.breadcrumb span{opacity:.4;}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:24px;}
+.eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--orange);flex-shrink:0;}
+.hero-h{font-family:var(--jp);font-size:clamp(32px,3.6vw,50px);font-weight:600;line-height:1.55;letter-spacing:.04em;color:var(--tx1);margin-bottom:20px;}
+.hero-h .oc{color:var(--orange);}
+.hero-h .bc{color:var(--blue-l);}
+.hero-en{font-family:var(--en);font-style:italic;font-size:13px;color:var(--tx3);letter-spacing:.06em;margin-bottom:36px;}
+.hero-lead{font-family:var(--jp);font-size:15px;color:var(--tx2);line-height:2.1;max-width:680px;}
+.sec{padding:100px 0;border-top:0.5px solid var(--bd);}
+.sec.alt{background:var(--bg2);}
+.si{max-width:1100px;margin:0 auto;padding:0 52px;}
+.sec-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:20px;}
+.sec-ey::before{content:'';display:block;width:20px;height:1.5px;background:var(--orange);}
+.sec-h{font-family:var(--jp);font-size:clamp(22px,2.4vw,32px);font-weight:600;line-height:1.58;color:var(--tx1);margin-bottom:40px;}
+
+/* PAIN */
+.pains-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.pain-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:28px 26px;position:relative;overflow:hidden;transition:border-color .2s;}
+.pain-card:hover{border-color:var(--bd2);}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.pain-card:nth-child(1)::before,.pain-card:nth-child(4)::before{background:var(--blue);}
+.pain-card:nth-child(2)::before,.pain-card:nth-child(5)::before{background:var(--orange);}
+.pain-card:nth-child(3)::before,.pain-card:nth-child(6)::before{background:var(--blue-l);}
+.pain-q{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--orange);margin-bottom:12px;}
+.pain-title{font-family:var(--jp);font-size:15px;font-weight:600;color:var(--tx1);line-height:1.6;margin-bottom:10px;}
+.pain-desc{font-family:var(--jp);font-size:12.5px;color:var(--tx2);line-height:1.85;}
+
+/* WHO */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.who-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:28px 26px;transition:border-color .2s;}
+.who-card:hover{border-color:var(--bd2);}
+.who-icon{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--blue-l);text-transform:uppercase;margin-bottom:12px;}
+.who-title{font-family:var(--jp);font-size:15px;font-weight:600;color:var(--tx1);margin-bottom:10px;line-height:1.5;}
+.who-desc{font-family:var(--jp);font-size:12.5px;color:var(--tx2);line-height:1.85;}
+
+/* STRENGTH */
+.strengths-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.strength-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:32px 30px;position:relative;overflow:hidden;transition:border-color .2s;}
+.strength-card:hover{border-color:var(--bd2);}
+.sbar{position:absolute;left:0;top:0;bottom:0;width:3px;}
+.strength-card:nth-child(1) .sbar{background:var(--blue);}
+.strength-card:nth-child(2) .sbar{background:var(--orange);}
+.strength-card:nth-child(3) .sbar{background:var(--blue-l);}
+.strength-card:nth-child(4) .sbar{background:var(--orange);}
+.s-num{font-family:var(--en);font-size:10px;letter-spacing:.14em;color:var(--tx3);margin-bottom:10px;}
+.s-title{font-family:var(--jp);font-size:16px;font-weight:600;color:var(--tx1);margin-bottom:12px;line-height:1.5;}
+.s-body{font-family:var(--jp);font-size:13px;color:var(--tx2);line-height:1.9;}
+
+/* SERVICES */
+.svc-wrap{display:flex;flex-direction:column;border:0.5px solid var(--bd);border-radius:4px;overflow:hidden;}
+.svc-row{display:grid;grid-template-columns:200px 1fr;border-bottom:0.5px solid var(--bd);}
+.svc-row:last-child{border-bottom:none;}
+.svc-label{padding:28px 24px;background:var(--bg3);border-right:0.5px solid var(--bd);display:flex;align-items:center;}
+.svc-label-text{font-family:var(--jp);font-size:13px;font-weight:600;color:var(--tx1);line-height:1.6;}
+.svc-label-sub{font-size:10px;color:var(--tx3);margin-top:4px;letter-spacing:.08em;}
+.svc-content{padding:28px 28px;background:var(--bg2);}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.svc-list li{font-family:var(--jp);font-size:13px;color:var(--tx2);display:flex;align-items:baseline;gap:10px;line-height:1.7;}
+.svc-list li::before{content:'—';color:var(--blue-l);font-size:11px;flex-shrink:0;}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
+.result-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:32px 28px;}
+.result-tag{font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;}
+.result-items{display:flex;flex-direction:column;gap:8px;}
+.result-item{font-family:var(--jp);font-size:13px;color:var(--tx2);display:flex;align-items:baseline;gap:8px;line-height:1.7;}
+.result-item::before{content:'·';color:var(--orange);font-size:16px;flex-shrink:0;line-height:1;}
+
+/* CTA */
+.cta-band{padding:96px 0;background:var(--blue);position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:52px 52px;}
+.cta-band::after{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(244,164,7,.22) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 52px;display:flex;justify-content:space-between;align-items:center;gap:48px;}
+.cta-h{font-family:var(--jp);font-size:clamp(20px,2.2vw,30px);font-weight:600;color:#fff;line-height:1.6;margin-bottom:14px;}
+.cta-sub{font-family:var(--jp);font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.9;}
+.cta-acts{display:flex;flex-direction:column;gap:12px;flex-shrink:0;}
+.btn-cw{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 36px;background:#fff;color:var(--blue);border-radius:3px;text-align:center;transition:opacity .18s;white-space:nowrap;}
+.btn-cw:hover{opacity:.92;color:var(--blue);}
+.btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 36px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
+.btn-co:hover{border-color:#fff;}
+.hero>*{animation:fadeUp .6s ease both;}
+.hero>*:nth-child(1){animation-delay:.05s;}.hero>*:nth-child(2){animation-delay:.12s;}.hero>*:nth-child(3){animation-delay:.2s;}.hero>*:nth-child(4){animation-delay:.28s;}.hero>*:nth-child(5){animation-delay:.38s;}
+</style>
+
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">トップ</a><span>/</span><span>リハビリテーション事業支援</span>
+  </div>
+  <div class="eyebrow">Rehabilitation</div>
+  <h1 class="hero-h">
+    「正しいリハビリ」と<br>
+    「<span class="oc">結果の出る</span>リハビリ部門」は、<br>
+    <span class="bc">別の問題</span>だ。
+  </h1>
+  <p class="hero-en">Clinical excellence and organisational performance — bridging the gap.</p>
+  <p class="hero-lead">
+    リハビリテーションの質を上げることと、部門として収益・稼働・人材定着の成果を出すことは、別々に取り組む必要があります。現場の臨床力を高めながら、運営・経営の両面から部門全体を底上げする——それがリハビットの事業支援です。治療にアフターフォローが当然であるように、アドバイスで終わらず、伴走し、結果を確かめ、ともに喜び合います。
+  </p>
+</div>
+
+<!-- WHO -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">For Whom</div>
+    <h2 class="sec-h">こんな方々からご相談をいただいています</h2>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">Hospital</div>
+        <div class="who-title">回復期・療養型病院のリハビリ部門責任者・院長</div>
+        <div class="who-desc">病床稼働・FIM改善率・在宅復帰率など、指標の改善に取り組みたいが何から手をつければいいかわからない。医師がリハビリ部門をどう動かすかが見えていない。</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">Clinic / Self-pay</div>
+        <div class="who-title">外来リハビリクリニック・自費リハビリ施設のオーナー・院長</div>
+        <div class="who-desc">臨床の質には自信があるが、スタッフ採用・育成・経営数字の管理が追いついていない。メディア監修・運営助言・ハイエンド顧客への個別対応まで、顧問医師として幅広く関わってほしい。</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">Care / Welfare</div>
+        <div class="who-title">介護保険施設・通所リハビリの管理者・法人担当者</div>
+        <div class="who-desc">リハビリの質を評価・担保する医師がいない。加算取得・書類整備・スタッフ研修をまとめて相談できる相手がほしい。</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">Manufacturer</div>
+        <div class="who-title">医療機器メーカー・リハビリ関連企業</div>
+        <div class="who-desc">製品開発前の市場調査・臨床監修・医療機関へのリーチに、リハビリテーション科専門医の視点が必要。</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">Media / Publishing</div>
+        <div class="who-title">医療系メディア・出版社・教育機関</div>
+        <div class="who-desc">リハビリテーション領域の記事監修・書籍執筆・教材開発・研修講師として専門家に依頼したい。</div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">IT / System</div>
+        <div class="who-title">医療DXに取り組むシステム開発企業</div>
+        <div class="who-desc">リハビリ・医療介護の現場知識を持つ医師として、開発・設計フェーズからアドバイザリーとして関わってほしい。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="sec" style="background:var(--bg0);">
+  <div class="si">
+    <div class="sec-ey">Why Rehabit</div>
+    <h2 class="sec-h">リハビットが担える理由</h2>
+    <div class="strengths-grid">
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">01</div>
+        <div class="s-title">リハビリテーション科専門医として臨床の深さがある</div>
+        <div class="s-body">慶應義塾大学リハビリテーション科での専門研修を経て2016年専門医取得。脳卒中・整形疾患・神経難病など幅広い疾患のリハビリを経験し、セラピストが「医師に聞きたくて聞けなかった」臨床の疑問に正面から答えられます。</div>
+      </div>
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">02</div>
+        <div class="s-title">病院経営者として運営・数字の両面を見てきた</div>
+        <div class="s-body">回復期リハビリテーション病棟を有する病院のセンター長・院長として、病床稼働管理・FIM改善率・在宅復帰率・人材定着率に直接責任を持ちながら現場を動かしてきました。「臨床はわかるが経営はわからない」では終わりません。</div>
+      </div>
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">03</div>
+        <div class="s-title">ITと自動化で、提案を現場実装まで届ける</div>
+        <div class="s-body">病床稼働管理ダッシュボード・カンファレンスフォーマットの設計・電子カルテ導入など、「設計して終わり」にしない実装支援が強みです。GAS・Python・AI APIを活用した業務効率化ツールの開発も対応します。</div>
+      </div>
+      <div class="strength-card">
+        <div class="sbar"></div>
+        <div class="s-num">04</div>
+        <div class="s-title">厚生労働省・評価機構での経験で制度の目線がある</div>
+        <div class="s-body">厚生労働省への出向で政策立案に関わり、日本医療機能評価機構では調査担当として多数の医療機関の実態を見てきました。加算取得・機能評価・指定基準への対応を、制度の意図から理解して支援します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec alt">
+  <div class="si">
+    <div class="sec-ey">Service Content</div>
+    <h2 class="sec-h">支援内容</h2>
+    <div class="svc-wrap">
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">臨床・技術支援</div><div class="svc-label-sub">Clinical</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>医師向け・セラピスト向けの症例検討・研修（リハビリ総論・各論・医療安全）</li>
+            <li>リハビリテーション科診療の立ち上げ・再編支援</li>
+            <li>自費リハビリ施設の技術指導・顧問医師・ハイエンド顧客への個別対応</li>
+            <li>自費リハ施設のメディア監修・コンテンツ品質管理</li>
+            <li>脳卒中・整形・神経難病のリハビリに関する臨床相談</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">運営・経営支援</div><div class="svc-label-sub">Operations</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>病床稼働率・FIM改善率・在宅復帰率の改善支援</li>
+            <li>カンファレンス・会議フォーマットの設計・ファシリテーション</li>
+            <li>リハビリ部門の採用・育成・定着率向上の仕組みづくり</li>
+            <li>病床稼働管理ダッシュボードの設計・開発支援</li>
+            <li>療法士採用・医療機器導入に関するアドバイザリー</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">制度・評価対応</div><div class="svc-label-sub">Compliance</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>リハビリテーション関連加算の取得・維持支援</li>
+            <li>病院機能評価（リハビリテーション領域）の事前対応</li>
+            <li>第三者評価・実地指導への準備サポート</li>
+            <li>地域医療構想・機能転換に伴うリハビリ部門の再設計</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">教材・コンテンツ</div><div class="svc-label-sub">Content</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>新入職員向けビデオ教材の企画・監修・制作（外部制作会社と連携）</li>
+            <li>医療系メディア・書籍・雑誌への寄稿・監修</li>
+            <li>脳卒中・リハビリをテーマとしたオウンドメディアの記事作成</li>
+            <li>院内勉強会・外部講演・学会発表のサポート</li>
+          </ul>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-label"><div><div class="svc-label-text">企業・開発支援</div><div class="svc-label-sub">Industry</div></div></div>
+        <div class="svc-content">
+          <ul class="svc-list">
+            <li>医療機器メーカーの開発前フェーズにおける市場調査・臨床監修</li>
+            <li>医療DX・システム開発企業へのアドバイザリー（設計〜実装フェーズ）</li>
+            <li>医療職懇話会・勉強会のファシリテーション</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">Track Record</div>
+    <h2 class="sec-h">支援実績</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-tag">Hospital</div>
+        <div class="result-items">
+          <div class="result-item">回復期リハビリ病棟の病床占有率 94%→99% に改善</div>
+          <div class="result-item">高度専門機能認定（回復期リハビリテーション）取得支援</div>
+          <div class="result-item">電子カルテ導入・病床稼働管理ダッシュボードの開発</div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-tag">Education / Training</div>
+        <div class="result-items">
+          <div class="result-item">医師・セラピスト・管理職向け研修 1,000回以上</div>
+          <div class="result-item">新入職員向けビデオ教材の制作・導入</div>
+          <div class="result-item">医療職懇話会のファシリテーション多数</div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-tag">Industry / Media</div>
+        <div class="result-items">
+          <div class="result-item">医療機器メーカーの開発前市場調査への協力</div>
+          <div class="result-item">医療DX企業へのアドバイザリー支援</div>
+          <div class="result-item">脳卒中オウンドメディアの監修・記事作成</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contact">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-h">リハビリ部門の<br>「次の一手」を、一緒に考えます。</h2>
+      <p class="cta-sub">臨床・運営・制度——どの切り口からでも構いません。初回相談は無料です。<br>地方への出張・リモート対応も歓迎しています。</p>
+    </div>
+    <div class="cta-acts">
+      <a href="mailto:info@rehabit-health.com" class="btn-cw">メールでお問い合わせ</a>
+      <a href="https://www.rehabit-health.com/お問い合わせリハビリ" class="btn-co">フォームでお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+</Base>
