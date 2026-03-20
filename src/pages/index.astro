@@ -1,6 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
 const base = import.meta.env.BASE_URL;
+
+let posts: { title: string; url: string; date: string }[] = [];
+try {
+  const res = await fetch('https://note.com/yamako_rehabit/rss');
+  const xml = await res.text();
+  const items = xml.match(/<item>([\s\S]*?)<\/item>/g) || [];
+  posts = items.slice(0, 2).map(item => {
+    const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] ||
+                  item.match(/<title>(.*?)<\/title>/)?.[1] || '';
+    const url = item.match(/<link>(.*?)<\/link>/)?.[1] ||
+                item.match(/<guid>(.*?)<\/guid>/)?.[1] || '';
+    const pubDate = item.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] || '';
+    const date = pubDate
+      ? new Date(pubDate).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')
+      : '';
+    return { title, url, date };
+  });
+} catch (e) {
+  posts = [];
+}
 ---
 <Base title="株式会社リハビット | 組織の医師">
 
@@ -117,6 +137,17 @@ const base = import.meta.env.BASE_URL;
 .btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 34px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
 .btn-co:hover{border-color:#fff;}
 
+/* ── NOTE OVERLAY ── */
+.note-overlay{position:absolute;bottom:28px;left:16px;right:16px;display:flex;flex-direction:column;gap:8px;z-index:2;}
+.note-label{font-size:10px;font-weight:600;letter-spacing:.18em;color:var(--orange);text-transform:uppercase;margin-bottom:4px;}
+.note-card{background:rgba(14,28,48,0.88);border:0.5px solid var(--bd);border-radius:4px;padding:14px 16px;text-decoration:none;transition:border-color .18s,background .18s;backdrop-filter:blur(8px);}
+.note-card:hover{border-color:var(--bd2);background:rgba(14,28,48,0.96);}
+.note-title{font-family:var(--jp);font-size:12.5px;color:var(--tx1);line-height:1.55;margin-bottom:8px;}
+.note-meta{display:flex;justify-content:space-between;align-items:center;}
+.note-date{font-size:11px;color:var(--tx3);}
+.note-arrow{font-size:12px;color:var(--tx3);transition:color .18s;}
+.note-card:hover .note-arrow{color:var(--tx1);}
+
 /* ── ANIM ── */
 .hero-left>*{animation:fadeUp .65s ease both;}
 .hero-left>*:nth-child(1){animation-delay:.08s;}
@@ -192,6 +223,20 @@ const base = import.meta.env.BASE_URL;
       <circle cx="240" cy="240" r="10" fill="#F4A407"/>
       <text x="240" y="284" text-anchor="middle" fill="#627088" font-size="10" font-family="'Shippori Mincho',serif" letter-spacing="2.5">組織の医師</text>
     </svg>
+    {posts.length > 0 && (
+      <div class="note-overlay">
+        <div class="note-label">Latest Note</div>
+        {posts.map((post) => (
+          <a href={post.url} target="_blank" rel="noopener" class="note-card">
+            <div class="note-title">{post.title}</div>
+            <div class="note-meta">
+              <span class="note-date">{post.date}</span>
+              <span class="note-arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
   </div>
 
   <div class="hero-stats">
