@@ -72,6 +72,11 @@ const base = import.meta.env.BASE_URL;
 .btn-cw:hover{opacity:.92;color:var(--blue);}
 .btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 36px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
 .btn-co:hover{border-color:#fff;}
+.ohp-banner{background:var(--bg3);border:0.5px solid var(--bd2);border-left:3px solid var(--blue);border-radius:4px;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:32px;max-width:1100px;margin:0 auto 0;padding-left:32px;}
+.ohp-banner-text{font-family:var(--jp);font-size:13.5px;color:var(--tx2);line-height:1.75;}
+.ohp-banner-text strong{color:var(--tx1);font-weight:600;display:block;margin-bottom:4px;}
+.btn-ohp{display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.06em;padding:11px 26px;background:var(--blue);color:#fff;border-radius:3px;white-space:nowrap;transition:background .18s;}
+.btn-ohp:hover{background:var(--blue-l);color:#fff;}
 .hero>*{animation:fadeUp .6s ease both;}
 .hero>*:nth-child(1){animation-delay:.05s;}.hero>*:nth-child(2){animation-delay:.12s;}.hero>*:nth-child(3){animation-delay:.2s;}.hero>*:nth-child(4){animation-delay:.28s;}.hero>*:nth-child(5){animation-delay:.38s;}
 </style>
@@ -89,6 +94,17 @@ const base = import.meta.env.BASE_URL;
   <p class="hero-lead">
     メンタルヘルス不調・過重労働・休職の長期化——いずれも放置すれば、機会損失・訴訟リスク・採用コストの増大として経営に跳ね返ります。社員の健康と幸福を整えることは、組織の成果を上げるための経営課題です。様々な組織のガバナンスを見てきた専門家の目線で、提案から解決まで伴走します。
   </p>
+</div>
+
+<!-- HOSPITAL OHP BANNER -->
+<div style="padding:0 52px 80px;background:var(--bg0);">
+  <div class="ohp-banner">
+    <div class="ohp-banner-text">
+      <strong>病院・医療機関の産業医をお探しの方へ</strong>
+      病院産業医には特有の難しさがあります。内部兼務では機能しにくい理由と、リハビットのアプローチを専用ページで説明しています。
+    </div>
+    <a href="/hospital-ohp/" class="btn-ohp">病院向け産業医 特設ページ →</a>
+  </div>
 </div>
 
 <!-- PAIN POINTS -->
