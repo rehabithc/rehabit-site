@@ -1,0 +1,391 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Base title="病院・医療機関向け産業医サービス | 株式会社リハビット" description="病院内部の医師が産業医を兼務していませんか。合法ですが、機能していない可能性があります。病院経営・臨床・産業医の三役を経験した医師が、組織の視点で病院の産業保健を支援します。" isSubPage={true}>
+
+<style is:global>
+/* ── HERO ── */
+.hero{padding:148px 52px 100px;max-width:1100px;margin:0 auto;position:relative;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--tx3);letter-spacing:.06em;margin-bottom:32px;}
+.breadcrumb a{color:var(--tx3);transition:color .18s;}
+.breadcrumb a:hover{color:var(--tx2);}
+.breadcrumb span{opacity:.4;}
+
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:24px;}
+.eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--orange);flex-shrink:0;}
+
+.hero-h{font-family:var(--jp);font-size:clamp(28px,3.2vw,46px);font-weight:600;line-height:1.55;letter-spacing:.04em;color:var(--tx1);margin-bottom:20px;}
+.hero-h .oc{color:var(--orange);}
+.hero-h .dim{color:var(--tx3);}
+
+.hero-en{font-family:var(--en);font-style:italic;font-size:13px;color:var(--tx3);letter-spacing:.06em;margin-bottom:36px;}
+
+.hero-lead{font-family:var(--jp);font-size:15px;color:var(--tx2);line-height:2.1;max-width:680px;}
+.hero-lead strong{color:var(--tx1);font-weight:600;}
+
+/* ── SECTION BASE ── */
+.sec{padding:100px 0;border-top:0.5px solid var(--bd);}
+.sec.alt{background:var(--bg2);}
+.si{max-width:1100px;margin:0 auto;padding:0 52px;}
+.sec-ey{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--orange);text-transform:uppercase;margin-bottom:20px;}
+.sec-ey::before{content:'';display:block;width:20px;height:1.5px;background:var(--orange);}
+.sec-h{font-family:var(--jp);font-size:clamp(22px,2.4vw,32px);font-weight:600;line-height:1.58;color:var(--tx1);margin-bottom:40px;}
+
+/* ── PROBLEM ── */
+.problem-lead{font-family:var(--jp);font-size:15px;color:var(--tx2);line-height:2.2;max-width:720px;margin-bottom:52px;}
+.problem-lead strong{color:var(--tx1);font-weight:600;}
+
+.signal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.signal-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:28px 26px;position:relative;overflow:hidden;transition:border-color .2s;}
+.signal-card:hover{border-color:var(--bd2);}
+.signal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.signal-card:nth-child(1)::before{background:var(--orange);}
+.signal-card:nth-child(2)::before{background:var(--orange);}
+.signal-card:nth-child(3)::before{background:var(--orange);}
+.signal-scene{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--orange);margin-bottom:12px;}
+.signal-title{font-family:var(--jp);font-size:15px;font-weight:600;color:var(--tx1);line-height:1.6;margin-bottom:10px;}
+.signal-now{font-family:var(--jp);font-size:12.5px;color:var(--tx3);line-height:1.8;padding:10px 14px;background:rgba(255,255,255,.03);border-radius:3px;border-left:2px solid var(--tx3);margin-bottom:8px;}
+.signal-should{font-family:var(--jp);font-size:12.5px;color:var(--tx2);line-height:1.8;padding:10px 14px;background:rgba(38,80,162,.08);border-radius:3px;border-left:2px solid var(--blue-l);}
+
+/* ── EXTERNAL VALUE ── */
+.ext-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.ext-body{font-family:var(--jp);font-size:14px;color:var(--tx2);line-height:2.2;margin-bottom:32px;}
+.ext-body strong{color:var(--tx1);font-weight:600;}
+.signals-list{display:flex;flex-direction:column;gap:16px;}
+.sig-item{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:20px 24px;background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;align-items:start;}
+.sig-arrow{font-family:var(--en);font-size:11px;color:var(--blue-l);letter-spacing:.08em;padding-top:2px;white-space:nowrap;}
+.sig-text{font-family:var(--jp);font-size:13px;color:var(--tx2);line-height:1.85;}
+.sig-text strong{color:var(--tx1);font-weight:600;display:block;margin-bottom:4px;}
+
+/* ── COMPARE TABLE ── */
+.compare-wrap{overflow-x:auto;}
+.compare-table{width:100%;border-collapse:collapse;font-family:var(--jp);}
+.compare-table th{padding:16px 24px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--bd2);}
+.compare-table th:first-child{text-align:left;color:var(--tx3);width:28%;}
+.compare-table th:nth-child(2){color:var(--tx3);text-align:center;width:36%;}
+.compare-table th:nth-child(3){color:var(--blue-l);text-align:center;width:36%;background:rgba(38,80,162,.06);border-radius:4px 4px 0 0;}
+.compare-table td{padding:18px 24px;font-size:13.5px;border-bottom:0.5px solid var(--bd);vertical-align:top;line-height:1.75;}
+.compare-table td:first-child{color:var(--tx3);font-size:12px;letter-spacing:.04em;}
+.compare-table td:nth-child(2){color:var(--tx2);text-align:center;}
+.compare-table td:nth-child(3){color:var(--tx1);text-align:center;background:rgba(38,80,162,.04);}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.1em;padding:4px 10px;border-radius:2px;background:rgba(38,80,162,.2);color:var(--blue-l);margin-bottom:6px;}
+
+/* ── APPROACH ── */
+.approach-steps{display:flex;flex-direction:column;gap:0;}
+.step{display:grid;grid-template-columns:80px 1fr;gap:32px;padding:44px 0;border-bottom:0.5px solid var(--bd);align-items:start;}
+.step:first-child{padding-top:0;}
+.step-num-wrap{display:flex;flex-direction:column;align-items:center;gap:0;padding-top:4px;}
+.step-num{font-family:var(--en);font-size:11px;letter-spacing:.12em;color:var(--blue-l);margin-bottom:8px;}
+.step-dot{width:10px;height:10px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+.step-line{width:1px;height:calc(100% + 44px);background:var(--bd);margin-top:6px;}
+.step:last-child .step-line{display:none;}
+.step-tag{font-size:10px;font-weight:600;letter-spacing:.14em;color:var(--blue-l);text-transform:uppercase;margin-bottom:10px;}
+.step-title{font-family:var(--jp);font-size:18px;font-weight:600;color:var(--tx1);margin-bottom:14px;line-height:1.5;}
+.step-body{font-family:var(--jp);font-size:13.5px;color:var(--tx2);line-height:2.0;}
+.step-detail{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.step-item{display:flex;align-items:baseline;gap:10px;font-family:var(--jp);font-size:13px;color:var(--tx2);}
+.step-item::before{content:'—';color:var(--blue-l);flex-shrink:0;font-size:11px;}
+
+/* ── MENU ── */
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.menu-card{background:var(--bg3);border:0.5px solid var(--bd);border-radius:4px;padding:32px 30px;transition:border-color .2s;}
+.menu-card:hover{border-color:var(--bd2);}
+.menu-tag{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px;}
+.menu-title{font-family:var(--jp);font-size:17px;font-weight:600;color:var(--tx1);margin-bottom:14px;line-height:1.5;}
+.menu-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.menu-list li{font-family:var(--jp);font-size:13px;color:var(--tx2);display:flex;align-items:baseline;gap:10px;}
+.menu-list li::before{content:'·';color:var(--orange);font-size:16px;flex-shrink:0;line-height:1;}
+.menu-note{margin-top:20px;padding-top:16px;border-top:0.5px solid var(--bd);font-family:var(--jp);font-size:12px;color:var(--tx3);line-height:1.8;}
+
+/* ── CTA ── */
+.cta-band{padding:96px 0;background:var(--blue);position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:52px 52px;}
+.cta-band::after{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(244,164,7,.22) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 52px;display:flex;justify-content:space-between;align-items:center;gap:48px;}
+.cta-h{font-family:var(--jp);font-size:clamp(20px,2.2vw,30px);font-weight:600;color:#fff;line-height:1.6;margin-bottom:14px;}
+.cta-sub{font-family:var(--jp);font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.9;}
+.cta-acts{display:flex;flex-direction:column;gap:12px;flex-shrink:0;}
+.btn-cw{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:14px 36px;background:#fff;color:var(--blue);border-radius:3px;text-align:center;transition:opacity .18s;white-space:nowrap;}
+.btn-cw:hover{opacity:.92;color:var(--blue);}
+.btn-co{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.07em;padding:13px 36px;border:1.5px solid rgba(255,255,255,.5);color:#fff;border-radius:3px;text-align:center;transition:border-color .18s;white-space:nowrap;}
+.btn-co:hover{border-color:#fff;}
+
+/* ── ANIM ── */
+.hero>*{animation:fadeUp .6s ease both;}
+.hero>*:nth-child(1){animation-delay:.05s;}
+.hero>*:nth-child(2){animation-delay:.12s;}
+.hero>*:nth-child(3){animation-delay:.2s;}
+.hero>*:nth-child(4){animation-delay:.28s;}
+.hero>*:nth-child(5){animation-delay:.38s;}
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    <a href={base}>トップ</a>
+    <span>/</span>
+    <span>病院・医療機関向け産業医</span>
+  </div>
+  <div class="eyebrow">Occupational Health for Hospitals</div>
+  <h1 class="hero-h">
+    あなたの病院の産業医は、<br>
+    組織を<span class="oc">診ています</span>か。
+  </h1>
+  <p class="hero-en">Occupational health that reads organisations, not just individuals.</p>
+  <p class="hero-lead">
+    内部の医師が産業医を兼務している病院は少なくありません。それは<strong>経済合理性があるように見えて、実は盲点を制度化している状態</strong>かもしれません。<br><br>
+    産業医の本来の役割は、疾病の手前にある職業起因性リスクと組織構造の問題を捉えること。病院経営・臨床・産業医の三役を経験した医師が、組織の視点で貴院の産業保健を支援します。
+  </p>
+</div>
+
+<!-- PROBLEM -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">The Problem</div>
+    <h2 class="sec-h">「機能していない」が<br>見えにくい理由。</h2>
+    <p class="problem-lead">
+      兼務医師による産業医面談は行われている。衛生委員会も開かれている。ストレスチェックも実施している。<strong>しかし、それは「やっている」だけで終わっていませんか。</strong><br><br>
+      臨床医の視点はどうしても「病気か否か」に向きます。しかし産業医が本来拾うべきは、その人がなぜそこにいるのか——<strong>背景にある組織構造の問題</strong>です。
+    </p>
+    <div class="signal-grid">
+      <div class="signal-card">
+        <div class="signal-scene">過重労働の面談</div>
+        <div class="signal-title">「無理しないでください」で終わる</div>
+        <div class="signal-now">現状：個人への助言で完結</div>
+        <div class="signal-should">あるべき姿：なぜその部署に負荷が集中しているのか、業務設計・人員配置にフィードバックする</div>
+      </div>
+      <div class="signal-card">
+        <div class="signal-scene">メンタル不調の面談</div>
+        <div class="signal-title">「休養が必要です」で終わる</div>
+        <div class="signal-now">現状：休職判断で完結</div>
+        <div class="signal-should">あるべき姿：同じ病棟から不調者が続いているなら、マネジメント課題として経営・人事へ報告する</div>
+      </div>
+      <div class="signal-card">
+        <div class="signal-scene">復職支援</div>
+        <div class="signal-title">繰り返す休職を止められない</div>
+        <div class="signal-now">現状：復職可否の判断のみ</div>
+        <div class="signal-should">あるべき姿：復帰後の業務設計・上司へのブリーフィング・フォローアップの仕組みをつくる</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTERNAL VALUE -->
+<section class="sec" style="background:var(--bg0);">
+  <div class="si">
+    <div class="sec-ey">Why External</div>
+    <h2 class="sec-h">外部だから、<br>見える・言える・動ける。</h2>
+    <div class="ext-g">
+      <div>
+        <p class="ext-body">
+          内部の人間は、組織のシグナルを<strong>「拾えない」のではありません。拾っても言いにくい</strong>のです。<br><br>
+          同じ科の同僚が過重労働でも、上司のマネジメントに問題があっても、院内の力学の中では指摘しにくい。産業医に外部性があって初めて、この問題は機能します。<br><br>
+          リハビットは病院経営者としての経験から、経営層・医局・看護部の三方向と対話できます。個人の訴えを組織のシグナルとして読み、然るべき相手に届けます。
+        </p>
+      </div>
+      <div class="signals-list">
+        <div class="sig-item">
+          <div class="sig-arrow">Signal 01</div>
+          <div class="sig-text">
+            <strong>同じ病棟から不調者が続く</strong>
+            マネジメント課題・業務設計の問題として経営・人事へフィードバック
+          </div>
+        </div>
+        <div class="sig-item">
+          <div class="sig-arrow">Signal 02</div>
+          <div class="sig-text">
+            <strong>特定の時期に体調不良が集中する</strong>
+            繁忙期・行事・人員体制との相関を分析し、業務設計の改善提案へ
+          </div>
+        </div>
+        <div class="sig-item">
+          <div class="sig-arrow">Signal 03</div>
+          <div class="sig-text">
+            <strong>休職者の復職が繰り返される</strong>
+            復帰支援の仕組み・上司育成・職場環境の根本改善へ
+          </div>
+        </div>
+        <div class="sig-item">
+          <div class="sig-arrow">Signal 04</div>
+          <div class="sig-text">
+            <strong>特定の職種に離職が集中する</strong>
+            給与以外の要因（関係性・評価・キャリア）を掘り下げ、組織改善へ接続
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="sec alt">
+  <div class="si">
+    <div class="sec-ey">Comparison</div>
+    <h2 class="sec-h">一般的な病院産業医と、<br>リハビットの違い。</h2>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>一般的な病院産業医<br>（内部兼務）</th>
+            <th><div class="compare-badge">Rehabit</div><br>リハビット産業医</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>面談の視点</td>
+            <td>臨床の延長——病気か否か</td>
+            <td>組織診断の視点——なぜそこにいるのか</td>
+          </tr>
+          <tr>
+            <td>フォローの範囲</td>
+            <td>個人の健康管理</td>
+            <td>職場環境・業務設計へのフィードバック</td>
+          </tr>
+          <tr>
+            <td>報告の質</td>
+            <td>報告書を出して終わり</td>
+            <td>経営・人事へのブリッジ、改善提案まで</td>
+          </tr>
+          <tr>
+            <td>言いやすさ</td>
+            <td>院内の力学で言いにくい</td>
+            <td>外部性があるから言える</td>
+          </tr>
+          <tr>
+            <td>組織への関与</td>
+            <td>産業保健の範囲内に限定</td>
+            <td>必要に応じて経営・組織課題にも踏み込む</td>
+          </tr>
+          <tr>
+            <td>身体・メンタル</td>
+            <td>専門外は他科に紹介</td>
+            <td>身体・メンタル両面から統合して診る</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="sec" style="background:var(--bg1);">
+  <div class="si">
+    <div class="sec-ey">Our Approach</div>
+    <h2 class="sec-h">リハビットの関わり方</h2>
+    <div class="approach-steps">
+
+      <div class="step">
+        <div class="step-num-wrap">
+          <div class="step-num">Step 01</div>
+          <div class="step-dot"></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag">Organisation Assessment</div>
+          <div class="step-title">現状の産業保健体制を診断する</div>
+          <div class="step-body">衛生委員会の運営実態・ストレスチェックの活用状況・面談記録の質・高ストレス者フォローの仕組みを整理し、「やっているだけ」になっている箇所を可視化します。</div>
+          <div class="step-detail">
+            <div class="step-item">現行の産業保健活動の棚卸しと課題整理</div>
+            <div class="step-item">衛生委員会の議事録・面談記録のレビュー</div>
+            <div class="step-item">離職率・休職率データとの照合</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-wrap">
+          <div class="step-num">Step 02</div>
+          <div class="step-dot" style="background:var(--orange);"></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag" style="color:var(--orange-l);">Occupational Health Practice</div>
+          <div class="step-title">産業医として組織の内側に入る</div>
+          <div class="step-body">定期的な面談・衛生委員会への参加・職場巡視を通じて、個人の訴えを組織のシグナルとして読み取ります。経営層・人事・現場管理職への報告・提言まで一貫して担います。</div>
+          <div class="step-detail">
+            <div class="step-item">月次の産業医面談・高ストレス者フォロー</div>
+            <div class="step-item">衛生委員会の立て直し・実質的な議論の設計</div>
+            <div class="step-item">職場巡視レポートと改善提案の経営層への報告</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num-wrap">
+          <div class="step-num">Step 03</div>
+          <div class="step-dot" style="background:var(--blue-l);"></div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-tag" style="color:var(--blue-l);">Organisation Bridge</div>
+          <div class="step-title">産業保健を組織改善に接続する</div>
+          <div class="step-body">面談で蓄積された情報を、業務設計・マネジメント・人材育成の改善に活かします。必要に応じて経営課題にも踏み込み、産業保健を「義務でやること」から「組織を強くする仕組み」へ転換します。</div>
+          <div class="step-detail">
+            <div class="step-item">離職・不調の傾向分析と組織的要因の提言</div>
+            <div class="step-item">管理職向けのメンタルヘルス・ラインケア研修</div>
+            <div class="step-item">復職支援の仕組みづくり・個別フォロー</div>
+            <div class="step-item">必要に応じた経営・組織コンサルティングへの展開</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="sec" style="background:var(--bg0);">
+  <div class="si">
+    <div class="sec-ey">Service Menu</div>
+    <h2 class="sec-h">支援メニュー</h2>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-tag">Spot Consultation</div>
+        <div class="menu-title">現状診断・スポット相談</div>
+        <ul class="menu-list">
+          <li>現行の産業保健体制の棚卸しと課題整理</li>
+          <li>衛生委員会の運営改善アドバイス</li>
+          <li>ストレスチェック結果の読み方・活用法</li>
+          <li>特定事例（休職・復職・ハラスメント等）の相談</li>
+        </ul>
+        <div class="menu-note">まず現状を整理したい場合にご活用ください。初回相談は無料です。</div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-tag">Ongoing Contract</div>
+        <div class="menu-title">産業医契約（継続）</div>
+        <ul class="menu-list">
+          <li>月次の産業医面談・高ストレス者フォロー</li>
+          <li>衛生委員会への定期参加・議題設計</li>
+          <li>職場巡視・改善提案レポートの作成</li>
+          <li>経営・人事へのフィードバック・提言</li>
+          <li>管理職・スタッフ向け研修（オプション）</li>
+        </ul>
+        <div class="menu-note">契約料は病院規模・支援内容により異なります。まずはご相談ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" id="contact">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-h">
+        まず30分、現状を<br>聞かせてください。
+      </h2>
+      <p class="cta-sub">
+        初回相談は無料・オンラインで対応します。<br>
+        「うまく言語化できない」課題こそ、医師の目で整理します。
+      </p>
+    </div>
+    <div class="cta-acts">
+      <a href="mailto:info@rehabit-health.com" class="btn-cw">メールで相談する</a>
+      <a href="mailto:info@rehabit-health.com" class="btn-co">フォームで相談する</a>
+    </div>
+  </div>
+</section>
+
+</Base>
